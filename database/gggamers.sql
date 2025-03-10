@@ -28,11 +28,11 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `GGGamers`.`Usuarios`
+-- Table `GGGamers`.`usuarios`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `GGGamers`.`Usuarios` ;
+DROP TABLE IF EXISTS `GGGamers`.`usuarios` ;
 
-CREATE TABLE IF NOT EXISTS `GGGamers`.`Usuarios` (
+CREATE TABLE IF NOT EXISTS `GGGamers`.`usuarios` (
   `id_usuario` INT NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(250) NOT NULL,
   `mail` VARCHAR(250) NOT NULL,
@@ -167,11 +167,11 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `GGGamers`.`Usuarios_has_eventos`
+-- Table `GGGamers`.`usuarios_has_eventos`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `GGGamers`.`Usuarios_has_eventos` ;
+DROP TABLE IF EXISTS `GGGamers`.`usuarios_has_eventos` ;
 
-CREATE TABLE IF NOT EXISTS `GGGamers`.`Usuarios_has_eventos` (
+CREATE TABLE IF NOT EXISTS `GGGamers`.`usuarios_has_eventos` (
   `Usuarios_id_usuario` INT NOT NULL,
   `eventos_id_evento` INT NOT NULL,
   `juegos_id_juego` INT NOT NULL,
@@ -185,7 +185,7 @@ CREATE TABLE IF NOT EXISTS `GGGamers`.`Usuarios_has_eventos` (
   INDEX `fk_Usuarios_has_eventos_juegos1_idx` (`juegos_id_juego` ASC) VISIBLE,
   CONSTRAINT `fk_Usuarios_has_eventos_Usuarios1`
     FOREIGN KEY (`Usuarios_id_usuario`)
-    REFERENCES `GGGamers`.`Usuarios` (`id_usuario`)
+    REFERENCES `GGGamers`.`usuarios` (`id_usuario`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Usuarios_has_eventos_eventos1`

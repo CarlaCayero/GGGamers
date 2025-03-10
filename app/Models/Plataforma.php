@@ -8,4 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 class Plataforma extends Model
 {
     use HasFactory;
+
+    protected $table = 'plataformas';
+    protected $primaryKey = 'id_plataforma';
+    public $timestamps = false;
+
+    /**
+     * The roles that belong to the Juegos
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function juegos()
+    {
+        return $this->belongsToMany(Juego::class, 'juegos_has_plataformas', 'id_plataforma', 'id_juego');
+    }
 }
