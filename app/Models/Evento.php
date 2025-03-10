@@ -5,21 +5,23 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Usuario extends Model
+class Eventos extends Model
 {
     use HasFactory;
 
-    protected $table = 'usuarios';
-    protected $primaryKey = 'id_usuario';
+    protected $table = 'eventos';
+    protected $primaryKey = 'id_evento';
     public $timestamps = false;
 
     /**
-     * Get the user that owns the Usuario
+     * Get the user that owns the Evento
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function rol()
+    public function espacio()
     {
-        return $this->belongsTo(Rol::class, 'id_rol');
+        return $this->belongsTo(Espacio::class, 'id_espacio');
     }
+
+
 }
