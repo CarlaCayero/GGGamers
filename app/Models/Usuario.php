@@ -22,4 +22,14 @@ class Usuario extends Model
     {
         return $this->belongsTo(Rol::class, 'id_rol');
     }
+
+    /**
+     * Get all of the comments for the Juego
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function participantes()
+    {
+        return $this->hasMany(Participar::class, 'id_usuario');
+    }
 }

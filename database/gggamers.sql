@@ -172,6 +172,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `GGGamers`.`usuarios_has_eventos` ;
 
 CREATE TABLE IF NOT EXISTS `GGGamers`.`usuarios_has_eventos` (
+  `id_participar` INT NOT NULL AUTO_INCREMENT,
   `Usuarios_id_usuario` INT NOT NULL,
   `eventos_id_evento` INT NOT NULL,
   `juegos_id_juego` INT NOT NULL,
@@ -179,7 +180,7 @@ CREATE TABLE IF NOT EXISTS `GGGamers`.`usuarios_has_eventos` (
   `hora_inicio` TIME NOT NULL,
   `hora_fin` TIME NOT NULL,
   `posicion` INT NOT NULL,
-  PRIMARY KEY (`Usuarios_id_usuario`, `eventos_id_evento`),
+  PRIMARY KEY (`id_participar`),
   INDEX `fk_Usuarios_has_eventos_eventos1_idx` (`eventos_id_evento` ASC) VISIBLE,
   INDEX `fk_Usuarios_has_eventos_Usuarios1_idx` (`Usuarios_id_usuario` ASC) VISIBLE,
   INDEX `fk_Usuarios_has_eventos_juegos1_idx` (`juegos_id_juego` ASC) VISIBLE,

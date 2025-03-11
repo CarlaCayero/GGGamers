@@ -32,4 +32,14 @@ class Juegos extends Model
     {
         return $this->belongsToMany(Categoria::class, 'juegos_has_categorias', 'id_juego', 'id_categoria');
     }
+
+    /**
+     * Get all of the comments for the Juego
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function participantes()
+    {
+        return $this->hasMany(Participar::class, 'id_juego');
+    }
 }
