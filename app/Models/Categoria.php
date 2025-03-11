@@ -20,6 +20,6 @@ class Categoria extends Model
      */
     public function juegos()
     {
-        return $this->belongsToMany(Juego::class, 'juegos_has_categorias', 'id_categoria', 'id_juego');
+        return $this->belongsToMany(Juegos::class, 'juegos_has_categorias', 'id_categoria', 'id_juego');
     }
 }
