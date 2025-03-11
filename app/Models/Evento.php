@@ -23,5 +23,14 @@ class Eventos extends Model
         return $this->belongsTo(Espacio::class, 'id_espacio');
     }
 
+    /**
+     * Get all of the comments for the Juego
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function participantes()
+    {
+        return $this->hasMany(Participar::class, 'id_evento');
+    }
 
 }
