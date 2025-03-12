@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
 use App\Models\Espacio;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Resources\EspacioResource;
 
 class EspacioController extends Controller
 {
@@ -13,7 +14,8 @@ class EspacioController extends Controller
      */
     public function index()
     {
-        //
+        $espacios = Espacio::all();
+        return EspacioResource::collection($espacios);
     }
 
     /**

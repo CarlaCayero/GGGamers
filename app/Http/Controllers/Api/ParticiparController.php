@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
 use App\Models\Participar;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Resources\ParticiparResource;
 
 class ParticiparController extends Controller
 {
@@ -13,7 +14,8 @@ class ParticiparController extends Controller
      */
     public function index()
     {
-        //
+        $participarntes = Participar::all();
+        return ParticiparResource::collection($participarntes);
     }
 
     /**

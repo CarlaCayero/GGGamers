@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
 use App\Models\Rol;
 use Illuminate\Http\Request;
+use App\Http\Resources\RolResource;
+use App\Http\Controllers\Controller;
 
 class RolController extends Controller
 {
@@ -13,7 +14,8 @@ class RolController extends Controller
      */
     public function index()
     {
-        //
+        $roles = Rol::all();
+        return RolResource::collection($roles);
     }
 
     /**
