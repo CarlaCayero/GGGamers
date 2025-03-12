@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Resources\UsuarioResource;
 
 class UsuarioController extends Controller
 {
@@ -13,7 +14,8 @@ class UsuarioController extends Controller
      */
     public function index()
     {
-        //
+        $usuarios = Usuario::all();
+        return UsuarioResource::collection($usuarios);
     }
 
     /**

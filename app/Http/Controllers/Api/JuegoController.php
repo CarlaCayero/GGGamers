@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
 use App\Models\Juego;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Resources\JuegoResource;
 
 class JuegoController extends Controller
 {
@@ -13,7 +14,8 @@ class JuegoController extends Controller
      */
     public function index()
     {
-        //
+        $juegos = Juego::all();
+        return JuegoResource::collection($juegos);
     }
 
     /**
