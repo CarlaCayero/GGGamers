@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
 use App\Models\Plataforma;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Resources\PlataformaResource;
 
 class PlataformaController extends Controller
 {
@@ -13,7 +14,8 @@ class PlataformaController extends Controller
      */
     public function index()
     {
-        //
+        $plataformas = Plataforma::all();
+        return PlataformaResource::collection($plataformas);
     }
 
     /**

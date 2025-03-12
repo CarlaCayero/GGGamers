@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\JuegoResource;
 use Illuminate\Database\QueryException;
 
+
 class JuegoController extends Controller
 {
     /**
