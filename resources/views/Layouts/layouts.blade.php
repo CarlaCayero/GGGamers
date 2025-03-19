@@ -6,10 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+
     @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/css/app.scss'])
 </head>
 
-<body>
+<body class="BodyClass">
 
     <nav class="Mynavbar">
         @if (!Auth::check())
@@ -38,10 +39,9 @@
                     ¡Eres administrador! Tienes acceso completo.
                 </div>
             @else
-            <div class="AdminMensaje">
-                No eres Administrador
-                <div>
-
+                <div class="AdminMensaje">
+                    No eres Administrador
+                    <div>
             @endif
         @endif
 
@@ -49,6 +49,9 @@
     <header class="ContenidoPrincipalDelXD">
         @yield('ContenidoPrincipalQueSeMuestra')
     </header>
+    <main class="ContenidoMain">
+
+    </main>
     <footer class="Myfooter">
         <div class="Myfooter1">
             <div class="MyFooterDiv">
