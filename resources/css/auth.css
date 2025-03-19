@@ -4,13 +4,17 @@ body {
     height: 100vh;
 }
 
+.vertical-line{
+    background: linear-gradient(to right, #23023B 1%, #20F4FF 5%, #23023B 50%);
+}
+
 #img-logo{
     width: 8rem;
     height: auto;
 }
 
 #h2-titulo{
-    margin: 2rem 0 5rem 0;
+    margin: 2rem 0 1rem 0;
     font-size: 5rem;
     color: #C6FF41;
 }
@@ -39,8 +43,14 @@ body {
     padding: 2rem;
 }
 .card {
-    background-color: #23023B !important;
+    background-color: transparent!important;
     box-shadow: none !important;
+    max-width: 90%;
+    width: 400px;
+    height: auto;
+    margin: 1rem auto;
+    border-radius: 10px;
+
 }
 .card-body{
     color:#20F4FF !important;
@@ -56,18 +66,50 @@ body {
     text-decoration: none;
 }
 
-.btn-inicio, .btn-register{
+.btn-inicio{
     background-color: #20F4FF !important;
     color: black !important;
     font-size: x-large !important;
     font-weight: bold !important;
 }
 
-.btn-inicio:hover, .btn-register:hover{
+.btn-inicio:hover{
     background-color: #169fa7 !important;
 }
 
 
 input{
     background-color: rgb(255,255,255, 0.5) !important;
+}
+
+
+@media (max-width: 768px) {
+    body {
+        flex-direction: column; /* Cambia a orientación vertical en pantallas pequeñas */
+    }
+
+    .img-container {
+        display: none;
+    }
+
+    .content-container {
+        flex: none;
+        width: 100%; /* El contenido ocupa todo el ancho */
+        padding: 1rem;
+    }
+
+    #img-authLogin, #img-authRegister{
+        display: none;
+    }
+
+    .card {
+        width: 90%; /* La tarjeta ocupa el 90% del ancho en pantallas pequeñas */
+    }
+
+    #h2-titulo {
+        font-size: 2rem; /* Reduce el tamaño del título */
+    }
+    .vertical-line{
+        background: #23023B;
+    }
 }

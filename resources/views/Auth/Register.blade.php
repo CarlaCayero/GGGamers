@@ -32,7 +32,7 @@
                     <input type="number" class="form-control"  id="edad" name="edad" required>
                 </div>
                 <input type="hidden" name="roles_id_rol" value="1">
-                <button type="submit" class="btn btn-register w-100">Registrarse</button>
+                <button type="submit" class="btn btn-inicio w-100">Registrarse</button>
             </form>
         </div>
     </div>
