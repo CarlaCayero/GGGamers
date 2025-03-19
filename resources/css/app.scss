@@ -6,8 +6,13 @@ $light: #C9FFFF;
 @import 'bootstrap/scss/bootstrap';
 
 body{
-    background-color: $secondary;
+    background-color: $primary;
 }
+
+.vertical-line{
+    background: linear-gradient(to right, $primary 1%, $info 5%, $primary 50%);
+}
+
 .Mynavbar{
     background-color: $primary;
 }

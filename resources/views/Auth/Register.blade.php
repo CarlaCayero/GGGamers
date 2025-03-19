@@ -1,32 +1,38 @@
 @extends('Layouts.layoutsAuth')
+@section('imagen')
+    <img src="{{ asset('image/registro.png') }}" alt="Imagen principal" id="img-authRegister">
+@endsection
 
-@section('Contenido')
+@section('titulo')
+    <img src="{{ asset('image/logo.png') }}" alt="Logotipo" id="img-logo">
+    <h2 id="h2-titulo">REGÍSTRATE</h2>
+@endsection
+
+@section('forms')
 <div class="container">
     <div class="card">
-        <h2>Registro de Usuario</h2>
         @include('partial.partial')
         <div class="card-body">
             <form action="{{ action([App\Http\Controllers\UsuarioController::class, 'store']) }}" method="POST">
                 @csrf
-                <label for="nombre">Nombre:</label>
-                <input type="text" id="nombre" name="nombre" required>
-                <br>
-
-                <label for="mail">Correo:</label>
-                <input type="email" id="mail" name="mail" required>
-                <br>
-
-                <label for="contrasenya">Contraseña:</label>
-                <input type="password" id="contrasenya" name="contrasenya" required>
-                <br>
-
-                <label for="edad">Edad:</label>
-                <input type="number" id="edad" name="edad" required>
-                <br>
-
+                <div class="mb-3">
+                    <label for="nombre" class="form-label">Nombre de usuario</label>
+                    <input type="text" class="form-control"  id="nombre" name="nombre" required>
+                </div>
+                <div class="mb-3">
+                    <label for="mail" class="form-label">Correo electónico</label>
+                    <input type="email" class="form-control" id="mail" name="mail" required>
+                </div>
+                <div class="mb-3">
+                    <label for="contrasenya" class="form-label">Contraseña</label>
+                    <input type="password" class="form-control"  id="contrasenya" name="contrasenya" required>
+                </div>
+                <div class="mb-3">
+                    <label for="edad" class="form-label">Edad</label>
+                    <input type="number" class="form-control"  id="edad" name="edad" required>
+                </div>
                 <input type="hidden" name="roles_id_rol" value="1">
-
-                <button type="submit">Registrarse</button>
+                <button type="submit" class="btn btn-register w-100">Registrarse</button>
             </form>
         </div>
     </div>

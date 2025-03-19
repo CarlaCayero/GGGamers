@@ -1,0 +1,73 @@
+body {
+    display: flex;
+    flex-direction: row; /* Orientación horizontal */
+    height: 100vh;
+}
+
+#img-logo{
+    width: 8rem;
+    height: auto;
+}
+
+#h2-titulo{
+    margin: 2rem 0 5rem 0;
+    font-size: 5rem;
+    color: #C6FF41;
+}
+
+#img-authLogin{
+    width: 65rem;
+    height: 90%;
+}
+#img-authRegister{
+    width: 60rem;
+    height: 100%;
+}
+
+.img-container {
+    flex: 1; /* La imagen ocupa el 50% del ancho */
+    display: flex;
+    justify-content: center;
+    background-color: #f0f0f0; /* Opcional: color de fondo para la imagen */
+}
+.content-container {
+    flex: 1; /* El contenido ocupa el 50% del ancho */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+.card {
+    background-color: #23023B !important;
+    box-shadow: none !important;
+}
+.card-body{
+    color:#20F4FF !important;
+    text-align: left;
+}
+
+.p-auth{
+    color:#fff !important;
+}
+
+.a-auth{
+    color:#FFFCA8 !important;
+    text-decoration: none;
+}
+
+.btn-inicio, .btn-register{
+    background-color: #20F4FF !important;
+    color: black !important;
+    font-size: x-large !important;
+    font-weight: bold !important;
+}
+
+.btn-inicio:hover, .btn-register:hover{
+    background-color: #169fa7 !important;
+}
+
+
+input{
+    background-color: rgb(255,255,255, 0.5) !important;
+}
