@@ -9,7 +9,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/css/app.scss'])
 </head>
 
-<body style="background-color: #23023bb7;">
+<body>
 
     <nav class="Mynavbar">
         @if (!Auth::check())
