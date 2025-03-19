@@ -3,10 +3,21 @@ $secondary: #C6FF41;
 $info: #20F4FF;
 $warning: #FFFCA8;
 $light: #C9FFFF;
+
+p {
+    margin-bottom: 0rem;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Exo+2:wght@400;700&display=swap');
 @import 'bootstrap/scss/bootstrap';
 
 body{
     background-color: $primary;
+    font-family: 'Orbitron', sans-serif;
+}
+.Myfooter{
+    font-family: 'Exo 2', sans-serif;
+
 }
 
 .Mynavbar{
@@ -20,3 +31,25 @@ body{
 .Registrarse{
     background-color: $secondary;
 }
+
+
+
+.shadow-dance-text {
+    color: $secondary;
+    text-shadow: 10px 10px 0 $primary, 15px 15px 0 $secondary;
+    animation: shadow-dance 2s infinite;
+    -webkit-text-stroke: 4px $secondary;
+    text-stroke: 4px $secondary;
+}
+
+@keyframes shadow-dance {
+    0%, 100% {
+        text-shadow: 10px 10px 0 $primary, 15px 15px 0 $secondary;
+    }
+    50% {
+        text-shadow: -10px -10px 0 $primary, -15px -15px 0 $secondary;
+    }
+}
+
+
+
