@@ -3,4 +3,19 @@ $secondary: #C6FF41;
 $info: #20F4FF;
 $warning: #FFFCA8;
 $light: #C9FFFF;
-@import 'bootstrap/scss/bootstrap'
+@import 'bootstrap/scss/bootstrap';
+
+body{
+    background-color: $secondary;
+}
+.Mynavbar{
+    background-color: $primary;
+}
+
+.IniciarSesion{
+    background-color: $light;
+}
+
+.Registrarse{
+    background-color: $secondary;
+}
