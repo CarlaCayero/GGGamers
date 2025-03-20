@@ -15,6 +15,7 @@
 
 @section('ContenidoDelMainMaldicion')
 <div class="carouselIndex">
+    <h2>Nuestro catalogo</h2>
     <div class="swiper mySwiper">
         <div class="swiper-wrapper">
             <div class="swiper-slide">
@@ -43,6 +44,41 @@
             </div>
 
         </div>
+    </div>
+</div>
+
+<aside class="ColaboladoresDelMain">
+    <h2>Colabolaramos con </h2>
+    <div class="ColaboladorMarca">
+        <section class="ColaboladorMarcaImagen">
+            <img src="{{ asset('image/Activision.png') }}" alt="Imagen 1">
+        </section>
+        <section class="ColaboladorMarcaImagen">
+            <img src="{{ asset('image/riotgames.png') }}" alt="Imagen 1">
+        </section>
+        <section class="ColaboladorMarcaImagen">
+            <img src="{{ asset('image/play.png') }}" alt="Imagen 1">
+        </section>
+        <section class="ColaboladorMarcaImagen">
+            <img src="{{ asset('image/nvidia.png') }}" alt="Imagen 1">
+        </section>
+        <section class="ColaboladorMarcaImagen">
+            <img src="{{ asset('image/intel.png') }}" alt="Imagen 1">
+        </section>
+        <section class="ColaboladorMarcaImagen">
+            <img src="{{ asset('image/logi.png') }}" alt="Imagen 1">
+        </section>
+        <section class="ColaboladorMarcaImagen">
+            <img src="{{ asset('image/xbos.png') }}" alt="Imagen 1">
+        </section>
+        <section class="ColaboladorMarcaImagen">
+            <img src="{{ asset('image/nintendo.png') }}" alt="Imagen 1">
+        </section>
+        <section class="ColaboladorMarcaImagen">
+            <img src="{{ asset('image/steam.png') }}" alt="Imagen 1">
+        </section>
+    </div>
+</aside>
         <div class="swiper-pagination"></div>
     </div>
 </div>
