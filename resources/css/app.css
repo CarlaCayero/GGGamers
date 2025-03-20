@@ -1,14 +1,10 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-p{
-    margin: 0;
-    margin-bottom: 0;
-}
 
-.Mynavbar{
+.Mynavbar {
     position: fixed;
     top: 0;
     right: 0;
@@ -18,33 +14,34 @@ p{
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    z-index: 1;
+    z-index: 1000;
 }
-.Mynavbar img{
+.Mynavbar img {
     width: 60px;
     height: 60px;
     margin-left: 100px;
     margin-right: 100px;
 }
-.Mynavbar a{
+.Mynavbar a {
     display: flex;
-    width: 22%;
+    width: 400px;
     height: 60%;
     text-decoration: none;
     color: black;
 }
 
-.IniciarSesion, .Registrarse{
+.IniciarSesion,
+.Registrarse {
     display: flex;
     width: 100%;
     height: 100%;
     justify-content: center;
     align-items: center;
     border-radius: 25px;
-    font-size: 35px;
+    font-size: 25px;
 }
-.ContenidoPrincipalDelXD{
-    background-color: #23023B;
+.ContenidoPrincipalDelXD {
+    background-color: #23023b;
     display: flex;
     position: relative;
     width: 100%;
@@ -53,18 +50,19 @@ p{
     align-items: center;
     flex-direction: column;
 }
-.Myfooter{
+.Myfooter {
     display: flex;
     width: 100%;
     height: 120px;
-    background-color: #23023B;
+    background-color: #23023b;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
-.Myfooter1, .Myfooter2{
+.Myfooter1,
+.Myfooter2 {
     display: flex;
-    width: 80%;
+    width: 90%;
     border: solid black 1px;
     height: auto;
     min-height: 50px;
@@ -73,7 +71,7 @@ p{
     flex-wrap: wrap;
     color: white;
 }
-.MyFooterDiv{
+.MyFooterDiv {
     width: 27%;
     display: flex;
     height: 90%;
@@ -81,11 +79,12 @@ p{
     align-items: center;
     justify-content: space-around;
 }
-.MyFooterDiv img{
+.MyFooterDiv img {
     width: 30px;
     height: 30px;
 }
-.name , .AdminMensaje{
+.name,
+.AdminMensaje {
     justify-content: space-around;
     align-items: center;
     display: flex;
@@ -104,7 +103,7 @@ p{
     opacity: 0.7;
     z-index: 0;
 }
-.shadow-dance-text{
+.shadow-dance-text {
     letter-spacing: 20px;
     font-size: 150px;
 }
@@ -119,7 +118,8 @@ p{
     font-size: 40px;
     color: white;
 }
-.ContenidoMain{
+.ContenidoMain {
+    flex-direction: column;
     width: 100%;
     height: auto;
     display: flex;
@@ -127,18 +127,30 @@ p{
     align-items: center;
     background-color: black;
 }
-.shadow-dance-container, .ContenidoTexto{
+.shadow-dance-container,
+.ContenidoTexto {
     z-index: 1;
 }
 
 .carouselIndex {
+    flex-direction: column;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: auto;
-    background: linear-gradient(to top, #23023B, rgba(255, 255, 255, 0.77) 30%, #23023B);
-    padding-top: 40px;
+    height: 800px;
+    background: linear-gradient(
+        to top,
+        #23023b,
+        rgba(255, 255, 255, 0.57) 60%,
+        #23023b
+    );
+
+
+}
+.carouselIndex h2{
+    font-size: 60px;
+    color: #C6FF41;
 }
 
 .swiper {
@@ -148,58 +160,141 @@ p{
 }
 
 .swiper-slide {
-    background-position: center;
-    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 700px;
+    height: 400px;
 }
+
 .swiper-slide img {
     border-radius: 15px;
+    object-fit: cover; /* Asegura que la imagen se ajuste correctamente */
     display: block;
     width: 100%;
-    -webkit-box-reflect: below 1px linear-gradient(transparent, transparent, #0002, #0004);
+    height: 100%;
 }
 
+.ColaboladoresDelMain {
+    display: flex;
+    width: 100%;
+    height: auto;
+    min-height: 300px;
+    background-color: #23023b;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    color: white;
+    padding-top: 10%;
+    padding-bottom: 10%;
+}
+.ColaboladoresDelMain h2{
+    font-size: 70px;
+    color: #C6FF41;
+    margin-bottom: 30px;
+}
+.ColaboladorMarca{
+    display: flex;
+    margin-top: 10px;
+    width: 80%;
+    height: 600px;
+    border: solid 1px white;
+    justify-content: space-between;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.ColaboladorMarcaImagen {
+    width: 25%;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 20px;
+    padding: 10px;
+    border-radius: 15px;
+    box-shadow: 0 0 8px 2px rgba(255, 255, 255, 0.6);
+    animation: pulsoBrillo 2s infinite alternate;
+}
+
+@keyframes pulsoBrillo {
+    0% {
+        box-shadow: 0 0 8px 2px rgba(255, 255, 255, 0.6); /* Brillo inicial */
+    }
+    50% {
+        box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.8); /* Brillo más fuerte */
+    }
+    100% {
+        box-shadow: 0 0 8px 2px rgba(255, 255, 255, 0.6); /* Vuelve al brillo inicial */
+    }
+}
+
+.ColaboladorMarcaImagen img{
+    width: 100%;
+    height: 100%;
+}
 /* Media 768 */
 
-@media (max-width: 768px) {
-.Myfooter{
-    flex-direction: row;
-}
-.MyFooterDiv {
-    width: 100%;
-}
-.Myfooter1, .Myfooter2{
-    display: flex;
+@media (max-width: 760px) {
+    .Myfooter {
+        flex-direction: row;
+    }
+    .MyFooterDiv {
+        width: 100%;
+    }
+    .Myfooter1,
+    .Myfooter2 {
+        display: flex;
 
-    height: 100%;
-    flex-direction: column;
-    flex-wrap: nowrap;
+        height: 100%;
+        flex-direction: column;
+        flex-wrap: nowrap;
+    }
+    .Myfooter1 {
+        width: 60%;
+    }
+    .Myfooter2 {
+        width: 40%;
+    }
+    .Mynavbar img {
+        margin-left: 25px;
+        margin-right: 25px;
+    }
+    .shadow-dance-text {
+        letter-spacing: 10px;
+        font-size: 105px;
+    }
+    .Mynavbar a {
+        width: 300px;
+    }
+    .ContenidoTexto {
+        width: 80%;
+        font-size: 30px;
+    }
+    .IniciarSesion,
+    .Registrarse {
+        font-size: 20px;
+    }
+    .swiper-slide {
+        width: 80%;
+        height: 300px;
+    }
+    .ColaboladorMarcaImagen{
+        width: 90%;
+        height: 150;
+    }
+    .ColaboladoresDelMain h2{
+        font-size: 50px;
+        margin-bottom: 30px;
+    }
+    .ColaboladorMarca{
+        height: auto;
+        justify-content: center;
+    }
+    .carouselIndex h2{
+        font-size: 40px;
+    }
 }
-.Myfooter1{
-    width: 60%;
-}
-.Myfooter2{
-    width: 40%;
-}
-.Mynavbar img{
-    margin-left: 25px;
-    margin-right: 25px;
-}
-.shadow-dance-text{
-    letter-spacing: 10px;
-    font-size: 105px;
-}
-.Mynavbar a{
-    width: 300px;
-}
-.ContenidoTexto{
-    width: 80%;
-    font-size: 30px;
-}
-.IniciarSesion, .Registrarse{
-    font-size: 20px;
-}
-.swiper-slide {
-    width: 400px;
-}
-}
+
+
