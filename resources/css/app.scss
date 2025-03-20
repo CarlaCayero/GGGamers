@@ -4,9 +4,7 @@ $info: #20F4FF;
 $warning: #FFFCA8;
 $light: #C9FFFF;
 
-p {
-    margin-bottom: 0rem;
-}
+
 
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Exo+2:wght@400;700&display=swap');
 @import 'bootstrap/scss/bootstrap';
@@ -17,7 +15,6 @@ body{
 }
 .Myfooter{
     font-family: 'Exo 2', sans-serif;
-
 }
 
 .Mynavbar{
