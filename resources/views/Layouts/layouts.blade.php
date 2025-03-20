@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
-    @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/css/app.scss'])
+    @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/css/app.scss','resources/css/pablo.css','resources/js/pablo.js'])
 </head>
 
 <body class="BodyClass">
