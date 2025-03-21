@@ -5,7 +5,7 @@ COPY . .
 RUN npm install && npm run build
 
 # Etapa 2: Configurar Laravel i instal·lar dependències
-FROM php:8.1-fpm AS laravel-stage
+FROM php:8.2-fpm AS laravel-stage
 WORKDIR /var/www/html
 COPY --from=build-stage /app /var/www/html
 RUN apt-get update && apt-get install -y \
@@ -20,6 +20,7 @@ RUN apt-get update && apt-get install -y \
 
 # Instal·lar Composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
+RUN git config --global --add safe.directory /var/www/html
 RUN composer install --no-dev --optimize-autoloader
 
 # Etapa 3: Configurar MySQL
@@ -32,7 +33,7 @@ ENV MYSQL_PASSWORD=1Q2w3e4r5t.
 # Etapa 4: Configurar NGINX
 FROM nginx:alpine AS nginx-stage
 COPY --from=laravel-stage /var/www/html /usr/share/nginx/html
-COPY .nginx/nginx.conf /etc/nginx/nginx.conf
+COPY nginx/nginx.conf /etc/nginx/nginx.conf
 
 # Exposar el port 80
 EXPOSE 80
