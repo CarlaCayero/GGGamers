@@ -32,7 +32,7 @@ ENV MYSQL_PASSWORD=1Q2w3e4r5t.
 # Etapa 4: Configurar NGINX
 FROM nginx:alpine AS nginx-stage
 COPY --from=laravel-stage /var/www/html /usr/share/nginx/html
-COPY ./nginx.conf /etc/nginx/nginx.conf
+COPY .nginx/nginx.conf /etc/nginx/nginx.conf
 
 # Exposar el port 80
 EXPOSE 80
