@@ -47,6 +47,16 @@ class UsuarioController extends Controller
      */
     public function destroy(Usuario $usuario)
     {
-        //
+        try{
+            $usuario->delete();
+            $response = \response()->json(['misatge' => 'Registro esborrat correctamente'], 200);
+        }
+        catch (QueryException $ex) {
+
+            $mensaje = Utilidad::errorMensaje($ex);
+            $response = \response()->json(["error" => $mensaje],400);
+        }
+
+        return $response;
     }
 }
