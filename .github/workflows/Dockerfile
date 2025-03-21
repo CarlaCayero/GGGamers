@@ -2,6 +2,8 @@
 FROM node:16 AS build-stage
 WORKDIR /app
 COPY . .
+RUN chmod -R 755 /app
+RUN npm install -g vite
 RUN npm install && npm run build
 
 # Etapa 2: Configurar Laravel i instal·lar dependències
