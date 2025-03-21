@@ -48,7 +48,7 @@
     </div>
 
     <aside class="ColaboladoresDelMain">
-        <h2>Colabolaramos con </h2>
+        <h2>Colaboramos con </h2>
         <div class="ColaboladorMarca">
             <section class="ColaboladorMarcaImagen">
                 <img src="{{ asset('image/Activision.png') }}" alt="Imagen 1">
