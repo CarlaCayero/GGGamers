@@ -31,7 +31,6 @@ class JuegoController extends Controller
         $juegos->pegi = $request->input('pegi');
 
         try {
-
             $juegos->save();
             // $request->session()->flash('success', 'Cicle creado con éxito.'); no sirver en una API
             $response = (new JuegoResource($juegos))->response()->setStatusCode(201);
@@ -72,7 +71,6 @@ class JuegoController extends Controller
         }
         return $response;
     }
-
     /**
      * Remove the specified resource from storage.
      */
