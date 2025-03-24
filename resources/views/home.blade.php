@@ -82,7 +82,7 @@
 
     <div id="app">
         <prueba></prueba> <!-- Aquí se usa el componente 'prueba' -->
-      </div>
+    </div>
 @endsection
 
 <script>

@@ -3,12 +3,11 @@ import * as bootstrap from 'bootstrap';
 
 import { createApp } from 'vue';
 import PruebaVue from './componente/prueba.vue';
+import TablaJuegos from './componente/PruebaApi.vue';
 
-// Crear la app con un objeto
 const app = createApp({});
 
-// Registrar el componente
 app.component('prueba', PruebaVue);
+app.component('tabla-juegos', TablaJuegos)
 
-// Montar Vue correctamente
 app.mount('#app');
