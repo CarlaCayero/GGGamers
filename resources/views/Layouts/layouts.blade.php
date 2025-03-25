@@ -6,30 +6,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/css/app.scss'])
+    @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/css/app.scss','resources/js/pablo.js'])
 </head>
 
 <body class="BodyClass">
 
     <nav class="Mynavbar">
         @if (!Auth::check())
-            <a href="{{ url('/login') }}">
+            <a href="{{ url('/login') }}" class="PreNavBar">
                 <div class="IniciarSesion">
                     Iniciar Sesion
                 </div>
             </a>
             <img src="{{ asset('image/logo.png') }}" alt="my logo">
-            <a href="{{ url('/register') }}">
+            <a href="{{ url('/register') }}" class="PreNavBar">
                 <div class="Registrarse">
                     Registrarse
                 </div>
             </a>
         @else
-            <div class="name">
-                ¡Bienvenido, {{ Auth::user()->nombre }}!
+            <div class="UsuarioIcono">
+                <div class="icono">
+
+                </div>
                 <form action="{{ route('logout') }}" method="POST" style="display:inline;">
                     @csrf
                     <button type="submit" class="btn btn-danger">Cerrar Sesión</button>
@@ -37,13 +39,19 @@
             </div>
             <img src="{{ asset('image/logo.png') }}" alt="my logo">
             @if (Auth::user()->roles_id_rol == 2)
-                <div class="AdminMensaje">
-                    ¡Eres administrador! Tienes acceso completo.
+                <div class="UsuarioIcono">
+                    <div class="BotonDeIcono">
+                        Mi torneo
+                    </div>
+                    <div class="BotonDeIcono">
+                        Sobre Nosotros
+                    </div>
                 </div>
             @else
-                <div class="AdminMensaje">
-                    No eres Administrador
-                    <div>
+                <div class="UsuarioIcono">
+                    <div class="BotonDeIcono"></div>
+                    <div class="BotonDeIcono"></div>
+                </div>
             @endif
         @endif
 
@@ -78,4 +86,5 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
 </html>

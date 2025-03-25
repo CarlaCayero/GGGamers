@@ -6,6 +6,8 @@ use App\Models\Plataforma;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\PlataformaResource;
+use App\Clases\Utilidad;
+use Illuminate\Database\QueryException;
 
 class PlataformaController extends Controller
 {
@@ -51,7 +53,7 @@ class PlataformaController extends Controller
      */
     public function update(Request $request, Plataforma $plataforma)
     {
-        //
+
     }
 
     /**

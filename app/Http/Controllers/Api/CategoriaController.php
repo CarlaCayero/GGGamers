@@ -6,6 +6,8 @@ use App\Models\Categoria;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\CategoriaResource;
+use App\Clases\Utilidad;
+use Illuminate\Database\QueryException;
 
 class CategoriaController extends Controller
 {
@@ -51,7 +53,14 @@ class CategoriaController extends Controller
      */
     public function update(Request $request, Categoria $categoria)
     {
-        //
+        $categoria->nombre = $request->input('nombre');
+        try {
+            $categoria->save();
+            return (new CategoriaResource($categoria))->response()->setStatusCode(200);
+        } catch (QueryException $ex) {
+            $mensaje = Utilidad::errorMensaje($ex);
+            return response()->json(["error" => $mensaje], 400);
+        }
     }
 
     /**

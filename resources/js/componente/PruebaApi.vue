@@ -115,8 +115,9 @@ export default {
                 me.Juegos = response.data;
             });
         },
-        AbirMenuEditar() {
+        AbirMenuEditar(juego) {
             this.insert = false;
+            this.juego = { ...juego }; // Clonar el juego para evitar modificar el original antes de guardar
             this.MyModelo = new bootstrap.Modal("#Añadir");
             this.MyModelo.show();
         },
@@ -165,18 +166,19 @@ export default {
                 });
         },
         EditarJuego() {
-            const me = this;
-            axios
-                .put("juegos/" + this.juego.id, me.juego)
+
+            axios.put(`juegos/${this.juego.id_juego}`, this.juego)
                 .then(() => {
                     this.SelectJuegos();
                     this.CerrarModal();
                 })
                 .catch((error) => {
                     this.EsError = true;
-                    me.MensajeDeError = error.response.data.error;
+                    this.MensajeDeError = error.response?.data?.error || "Error desconocido";
+                    console.error("Error en la actualización:", error);
                 });
         }
+
     },
     created() {
         this.SelectJuegos();

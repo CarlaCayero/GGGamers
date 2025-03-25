@@ -6,6 +6,8 @@ use App\Models\Espacio;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\EspacioResource;
+use App\Clases\Utilidad;
+use Illuminate\Database\QueryException;
 
 class EspacioController extends Controller
 {
@@ -50,7 +52,14 @@ class EspacioController extends Controller
      */
     public function update(Request $request, Espacio $espacio)
     {
-        //
+        $espacio->nombre = $request->input('nombre');
+        try {
+            $espacio->save();
+            return (new EspacioResource($espacio))->response()->setStatusCode(200);
+        } catch (QueryException $ex) {
+            $mensaje = Utilidad::errorMensaje($ex);
+            return response()->json(["error" => $mensaje], 400);
+        }
     }
 
     /**

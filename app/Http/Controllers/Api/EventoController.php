@@ -6,6 +6,8 @@ use App\Models\Evento;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\EventoResource;
+use App\Clases\Utilidad;
+use Illuminate\Database\QueryException;
 
 class EventoController extends Controller
 {

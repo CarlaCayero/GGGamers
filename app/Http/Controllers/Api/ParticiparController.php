@@ -6,6 +6,8 @@ use App\Models\Participar;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\ParticiparResource;
+use App\Clases\Utilidad;
+use Illuminate\Database\QueryException;
 
 class ParticiparController extends Controller
 {
@@ -56,7 +58,20 @@ class ParticiparController extends Controller
      */
     public function update(Request $request, Participar $participar)
     {
-        //
+        $participar->usuarios_id_usuario = $request->input('usuarios_id_usuario');
+        $participar->eventos_id_evento = $request->input('eventos_id_evento');
+        $participar->juegos_id_juego = $request->input('juegos_id_juego');
+        $participar->fecha = $request->input('fecha');
+        $participar->hora_inicio = $request->input('hora_inicio');
+        $participar->hora_fin = $request->input('hora_fin');
+        $participar->posicion = $request->input('posicion');
+        try {
+            $participar->save();
+            return (new ParticiparResource($participar))->response()->setStatusCode(200);
+        } catch (QueryException $ex) {
+            $mensaje = Utilidad::errorMensaje($ex);
+            return response()->json(["error" => $mensaje], 400);
+        }
     }
 
     /**
