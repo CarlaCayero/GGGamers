@@ -1,11 +1,8 @@
 @extends('Layouts.layoutsAuth')
-@section('imagen')
-    <img src="{{ asset('image/registro.png') }}" alt="Imagen principal" id="img-authRegister">
-@endsection
 
 @section('titulo')
-    <img src="{{ asset('image/logo.png') }}" alt="Logotipo" id="img-logo">
-    <h2 id="h2-titulo">REGÍSTRATE</h2>
+        <img src="{{ asset('image/logo.png') }}" alt="Logotipo" id="img-logo">
+        <h2 id="h2-titulo">REGÍSTRATE</h2>
 @endsection
 
 @section('forms')
@@ -30,6 +27,10 @@
                 <div class="mb-3">
                     <label for="edad" class="form-label">Edad</label>
                     <input type="number" class="form-control"  id="edad" name="edad" required>
+                </div>
+
+                <div>
+                    <p class="p-auth">¿Ya tienes una cuenta? Inicia sesión <a class="a-auth" href="{{ url('login') }}">aquí</a></p>
                 </div>
                 <input type="hidden" name="roles_id_rol" value="1">
                 <button type="submit" class="btn btn-inicio w-100">Registrarse</button>
