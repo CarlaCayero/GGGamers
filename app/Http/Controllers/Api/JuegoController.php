@@ -31,7 +31,6 @@ class JuegoController extends Controller
         $juegos->pegi = $request->input('pegi');
 
         try {
-
             $juegos->save();
             // $request->session()->flash('success', 'Cicle creado con éxito.'); no sirver en una API
             $response = (new JuegoResource($juegos))->response()->setStatusCode(201);
@@ -48,7 +47,7 @@ class JuegoController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Juego $juegos)
+    public function show(Juego $juego)
     {
         //
     }
@@ -56,38 +55,30 @@ class JuegoController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Juego $juegos)
+    public function update(Request $request, Juego $juego)
     {
-        $juegos->nombre = $request->input('nombre');
-        $juegos->pegi = $request->input('pegi');
+        $juego->nombre = $request->input('nombre');
+        $juego->pegi = $request->input('pegi');
         try {
-            $juegos->save();
-            // $request->session()->flash('success', 'Cicle creado con éxito.'); no sirver en una API
-            $response = (new JuegoResource($juegos))->response()->setStatusCode(201);
+            $juego->save();
+            return (new JuegoResource($juego))->response()->setStatusCode(200);
         } catch (QueryException $ex) {
-
             $mensaje = Utilidad::errorMensaje($ex);
-            // $request->session()->flash('error', $mensaje);
-            $response = \response()->json(["error" => $mensaje],400);
+            return response()->json(["error" => $mensaje], 400);
         }
-        return $response;
     }
-
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Juego $juegos)
+    public function destroy(Juego $juego)
     {
-        try{
-            $juegos->delete();
-            $response = \response()->json(['misatge' => 'Registro esborrat correctamente'], 200);
-        }
-        catch (QueryException $ex) {
-
+        try {
+            $juego->delete();
+            return response()->json(['mensaje' => 'Registro eliminado correctamente'], 200);
+        } catch (QueryException $ex) {
             $mensaje = Utilidad::errorMensaje($ex);
-            $response = \response()->json(["error" => $mensaje],400);
+            return response()->json(["error" => $mensaje], 400);
         }
-
-        return $response;
     }
+
 }

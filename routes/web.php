@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\JuegoController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsuarioController;
 
@@ -26,3 +27,5 @@ Route::get('/register', [UsuarioController::class, 'showRegisterForm'])->name('r
 Route::post('/register', [UsuarioController::class, 'store'])->name('register.store');
 
 Route::post('/logout', [UsuarioController::class, 'logout'])->name('logout');
+
+
