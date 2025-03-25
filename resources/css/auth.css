@@ -1,11 +1,56 @@
 body {
+    flex: 1; /* La imagen ocupa el 50% del ancho */
     display: flex;
-    flex-direction: row; /* Orientación horizontal */
-    height: 100vh;
+    justify-content: center;
+    background-color: #23023B;
 }
 
-.vertical-line{
-    background: linear-gradient(to right, #23023B 1%, #20F4FF 5%, #23023B 50%);
+.bgAnimation{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(20,1fr);
+    grid-template-rows: repeat(20,1fr);
+    background-color: #23023B;
+    filter: saturate(2);
+    overflow: hidden;
+}
+
+.colorBox{
+    z-index: 2;
+    filter: brightness(1.1);
+    transition: 2s ease;
+    position: relative;
+    margin: 2px;
+    background:#23023B;
+}
+
+.colorBox:hover{
+    background: #C6FF41;
+    transition-duration: 0s;
+}
+
+.backgroundAmim{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background:#6e0372;
+    filter: blur(60px);
+    animation: animBack 6s linear infinite;
+}
+
+@keyframes animBack{
+    0%{
+        top: -60px;
+    }
+    100%{
+        top: 120%;
+    }
 }
 
 #img-logo{
@@ -19,21 +64,13 @@ body {
     color: #C6FF41;
 }
 
-#img-authLogin{
-    width: 65rem;
-    height: 90%;
-}
-#img-authRegister{
-    width: 60rem;
-    height: 100%;
+.titulo {
+    display: block;
+    z-index: 3;
+    margin-bottom: 2rem;
+    width: auto;
 }
 
-.img-container {
-    flex: 1; /* La imagen ocupa el 50% del ancho */
-    display: flex;
-    justify-content: center;
-    background-color: #f0f0f0; /* Opcional: color de fondo para la imagen */
-}
 .content-container {
     flex: 1; /* El contenido ocupa el 50% del ancho */
     display: flex;
@@ -41,16 +78,16 @@ body {
     justify-content: center;
     align-items: center;
     padding: 2rem;
+    margin-top: 80px;
 }
 .card {
-    background-color: transparent!important;
+    background-color: rgb(0,0,0, 0.1) !important;
     box-shadow: none !important;
     max-width: 90%;
     width: 400px;
     height: auto;
     margin: 1rem auto;
     border-radius: 10px;
-
 }
 .card-body{
     color:#20F4FF !important;
@@ -59,6 +96,7 @@ body {
 
 .p-auth{
     color:#fff !important;
+
 }
 
 .a-auth{
@@ -88,10 +126,6 @@ input{
         flex-direction: column; /* Cambia a orientación vertical en pantallas pequeñas */
     }
 
-    .img-container {
-        display: none;
-    }
-
     .content-container {
         flex: none;
         width: 100%; /* El contenido ocupa todo el ancho */
@@ -103,7 +137,12 @@ input{
     }
 
     .card {
-        width: 90%; /* La tarjeta ocupa el 90% del ancho en pantallas pequeñas */
+        width: 80%; /* La tarjeta ocupa el 90% del ancho en pantallas pequeñas */
+    }
+
+    #img-logo{
+        width: 5rem;
+        height: auto;
     }
 
     #h2-titulo {
@@ -111,5 +150,20 @@ input{
     }
     .vertical-line{
         background: #23023B;
+    }
+
+    .btn-inicio{
+        background-color: #20F4FF !important;
+        color: black !important;
+        font-size: medium !important;
+        font-weight: bold !important;
+    }
+    .p-auth{
+        color:#fff !important;
+        font-size: small;
+        font-family: 'EXO 2';
+    }
+    .form-label{
+        font-size: 15px;
     }
 }

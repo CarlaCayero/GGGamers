@@ -1,11 +1,9 @@
 @extends('Layouts.layoutsAuth')
-@section('imagen')
-    <img src="{{ asset('image/inicioSesion.png') }}" alt="Imagen principal" id="img-authLogin">
-@endsection
 
 @section('titulo')
-    <img src="{{ asset('image/logo.png') }}" alt="Logotipo" id="img-logo" >
-    <h2 id="h2-titulo">INICIA SESIÓN</h2>
+        <img src="{{ asset('image/logo.png') }}" alt="Logotipo" id="img-logo" >
+        <h2 id="h2-titulo">INICIA SESIÓN</h2>
+
 @endsection
 
 @section('forms')
@@ -25,7 +23,7 @@
                     <input type="password" class="form-control" id="password" name="password" required>
                 </div>
                 <div>
-                    <p class="p-auth">¿Aún no te has registrado? haz click <a class="a-auth" href="http://">aquí</a></p>
+                    <p class="p-auth">¿Aún no te has registrado? haz click <a class="a-auth" href="{{ url('register') }}">aquí</a></p>
                 </div>
 
                 <button type="submit" class="btn btn-inicio w-100">Iniciar Sesión</button>
