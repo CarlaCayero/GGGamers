@@ -14,8 +14,8 @@ class ParticiparController extends Controller
      */
     public function index()
     {
-        $participarntes = Participar::all();
-        return ParticiparResource::collection($participarntes);
+        $participantes = Participar::all();
+        return ParticiparResource::collection($participantes);
     }
 
     /**
@@ -23,7 +23,24 @@ class ParticiparController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $participantes = new Participar();
+        $participantes->usuarios_id_usuario = $request->input('usuarios_id_usuario');
+        $participantes->eventos_id_evento = $request->input('eventos_id_evento');
+        $participantes->juegos_id_juego = $request->input('juegos_id_juego');
+        $participantes->fecha = $request->input('fecha');
+        $participantes->hora_inicio = $request->input('hora_inicio');
+        $participantes->hora_fin = $request->input('hora_fin');
+        $participantes->posicion = $request->input('posicion');
+
+        try {
+            $participantes->save();
+            $response = (new ParticiparResource($participantes))->response()->setStatusCode(201);
+        } catch (QueryException $ex) {
+            $mensaje = Utilidad::errorMensaje($ex);
+            $response = \response()->json(["error" => $mensaje],400);
+        }
+
+        return $response;
     }
 
     /**
@@ -47,6 +64,16 @@ class ParticiparController extends Controller
      */
     public function destroy(Participar $participar)
     {
-        //
+        try{
+            $participar->delete();
+            $response = \response()->json(['misatge' => 'Registro esborrat correctamente'], 200);
+        }
+        catch (QueryException $ex) {
+
+            $mensaje = Utilidad::errorMensaje($ex);
+            $response = \response()->json(["error" => $mensaje],400);
+        }
+
+        return $response;
     }
 }

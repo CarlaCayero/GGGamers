@@ -23,7 +23,23 @@ class UsuarioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $usuarios = new Usuario();
+        $usuarios->nombre = $request->input('nombre');
+        $usuarios->mail = $request->input('mail');
+        $usuarios->contrasenya = $request->input('contrasenya');
+        $usuarios->edad = $request->input('edad');
+        $usuarios->roles_id_rol = $request->input('roles_id_rol');
+
+
+        try {
+            $usuarios->save();
+            $response = (new UsuarioResource($usuarios))->response()->setStatusCode(201);
+        } catch (QueryException $ex) {
+            $mensaje = Utilidad::errorMensaje($ex);
+            $response = \response()->json(["error" => $mensaje],400);
+        }
+
+        return $response;
     }
 
     /**
@@ -47,6 +63,16 @@ class UsuarioController extends Controller
      */
     public function destroy(Usuario $usuario)
     {
-        //
+        try{
+            $usuario->delete();
+            $response = \response()->json(['misatge' => 'Registro esborrat correctamente'], 200);
+        }
+        catch (QueryException $ex) {
+
+            $mensaje = Utilidad::errorMensaje($ex);
+            $response = \response()->json(["error" => $mensaje],400);
+        }
+
+        return $response;
     }
 }

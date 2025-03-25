@@ -23,7 +23,18 @@ class EspacioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $espacios = new Espacio();
+        $espacios->nombre = $request->input('nombre');
+
+        try {
+            $espacios->save();
+            $response = (new EspacioResource($espacios))->response()->setStatusCode(201);
+        } catch (QueryException $ex) {
+            $mensaje = Utilidad::errorMensaje($ex);
+            $response = \response()->json(["error" => $mensaje],400);
+        }
+
+        return $response;
     }
 
     /**
@@ -47,6 +58,16 @@ class EspacioController extends Controller
      */
     public function destroy(Espacio $espacio)
     {
-        //
+        try{
+            $espacio->delete();
+            $response = \response()->json(['misatge' => 'Registro esborrat correctamente'], 200);
+        }
+        catch (QueryException $ex) {
+
+            $mensaje = Utilidad::errorMensaje($ex);
+            $response = \response()->json(["error" => $mensaje],400);
+        }
+
+        return $response;
     }
 }
