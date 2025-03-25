@@ -23,7 +23,19 @@ class RolController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $roles = new Rol();
+        $roles->nombre = $request->input('nombre');
+
+
+        try {
+            $roles->save();
+            $response = (new RolResource($roles))->response()->setStatusCode(201);
+        } catch (QueryException $ex) {
+            $mensaje = Utilidad::errorMensaje($ex);
+            $response = \response()->json(["error" => $mensaje],400);
+        }
+
+        return $response;
     }
 
     /**
