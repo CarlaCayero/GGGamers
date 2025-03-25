@@ -6,6 +6,8 @@ use App\Models\Usuario;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\UsuarioResource;
+use App\Clases\Utilidad;
+use Illuminate\Database\QueryException;
 
 class UsuarioController extends Controller
 {
@@ -55,7 +57,18 @@ class UsuarioController extends Controller
      */
     public function update(Request $request, Usuario $usuario)
     {
-        //
+        $usuario->nombre = $request->input('nombre');
+        $usuario->mail = $request->input('mail');
+        $usuario->contrasenya = $request->input('contrasenya');
+        $usuario->edad = $request->input('edad');
+        $usuario->roles_id_rol = $request->input('roles_id_rol');
+        try {
+            $usuario->save();
+            return (new UsuarioController($usuario))->response()->setStatusCode(200);
+        } catch (QueryException $ex) {
+            $mensaje = Utilidad::errorMensaje($ex);
+            return response()->json(["error" => $mensaje], 400);
+        }
     }
 
     /**

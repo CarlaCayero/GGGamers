@@ -6,6 +6,8 @@ use App\Models\Rol;
 use Illuminate\Http\Request;
 use App\Http\Resources\RolResource;
 use App\Http\Controllers\Controller;
+use App\Clases\Utilidad;
+use Illuminate\Database\QueryException;
 
 class RolController extends Controller
 {
@@ -51,7 +53,14 @@ class RolController extends Controller
      */
     public function update(Request $request, Rol $rol)
     {
-        //
+        $rol->nombre = $request->input('nombre');
+        try {
+            $rol->save();
+            return (new RolResource($rol))->response()->setStatusCode(200);
+        } catch (QueryException $ex) {
+            $mensaje = Utilidad::errorMensaje($ex);
+            return response()->json(["error" => $mensaje], 400);
+        }
     }
 
     /**

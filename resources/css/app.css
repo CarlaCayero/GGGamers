@@ -12,22 +12,36 @@
     width: 100%;
     height: 85px;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     z-index: 1000;
 }
 .Mynavbar img {
     width: 60px;
     height: 60px;
-    margin-left: 100px;
-    margin-right: 100px;
+    margin-left: 50px;
+    margin-right: 50px;
 }
-.Mynavbar a {
+.Mynavbar .PreNavBar {
     display: flex;
-    width: 400px;
+    width: 33%;
     height: 60%;
     text-decoration: none;
     color: black;
+}
+.PostAuthNavbar{
+    display: flex;
+    width: 200px;
+    height: 60%;
+}
+.SobreNosotros{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: white;
+    border: solid rgb(255, 255, 255) 1px;
+    height: 100%;
+    width: 100%;
 }
 
 .IniciarSesion,
@@ -217,6 +231,29 @@
     box-shadow: 0 0 8px 2px rgba(255, 255, 255, 0.6);
     animation: pulsoBrillo 2s infinite alternate;
 }
+.UsuarioIcono{
+    display: flex;
+    height: 50px;
+    width: 33%;
+    justify-content: space-between;
+    align-items: center;
+    color: black;
+}
+.UsuarioIcono .icono{
+    width: 70px;
+    height: 70px;
+    margin-right: 20px;
+    background-color: #20F4FF;
+    border-radius: 50%;
+}
+.BotonDeIcono{
+    width: 45%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+display: flex;
+    background-color: #C6FF41;
+}
 
 @keyframes pulsoBrillo {
     0% {
@@ -257,6 +294,9 @@
     .Myfooter2 {
         width: 40%;
     }
+    .Mynavbar{
+        justify-content: space-between;
+    }
     .Mynavbar img {
         margin-left: 25px;
         margin-right: 25px;
@@ -265,7 +305,7 @@
         letter-spacing: 10px;
         font-size: 105px;
     }
-    .Mynavbar a {
+    .Mynavbar .PreNavBar {
         width: 300px;
     }
     .ContenidoTexto {
