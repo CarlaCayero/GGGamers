@@ -167,7 +167,7 @@ export default {
         EditarJuego() {
             const me = this;
             axios
-                .put("juegos/" + this.juego.id_juego, me.juego)
+                .put("juegos/" + this.juego.id, me.juego)
                 .then(() => {
                     this.SelectJuegos();
                     this.CerrarModal();

@@ -16,7 +16,7 @@ use App\Http\Controllers\UsuarioController;
 */
 
 Route::get('/', function () {
-    return view('PruebaApi');
+    return view('home');
 });
 
 Route::get('/login', [UsuarioController::class, 'showLoginForm'])->name('login');
