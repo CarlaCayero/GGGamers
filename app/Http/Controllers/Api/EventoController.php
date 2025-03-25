@@ -23,7 +23,20 @@ class EventoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $eventos = new Evento();
+        $eventos->nombre = $request->input('nombre');
+        $eventos->descripcion = $request->input('descripcion');
+        $eventos->espacios_id_espacio = $request->input('espacios_id_espacio');
+
+        try {
+            $eventos->save();
+            $response = (new EventoResource($eventos))->response()->setStatusCode(201);
+        } catch (QueryException $ex) {
+            $mensaje = Utilidad::errorMensaje($ex);
+            $response = \response()->json(["error" => $mensaje],400);
+        }
+
+        return $response;
     }
 
     /**
@@ -47,6 +60,16 @@ class EventoController extends Controller
      */
     public function destroy(Evento $evento)
     {
-        //
+        try{
+            $evento->delete();
+            $response = \response()->json(['misatge' => 'Registro esborrat correctamente'], 200);
+        }
+        catch (QueryException $ex) {
+
+            $mensaje = Utilidad::errorMensaje($ex);
+            $response = \response()->json(["error" => $mensaje],400);
+        }
+
+        return $response;
     }
 }
