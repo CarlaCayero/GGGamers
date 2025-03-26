@@ -1,5 +1,5 @@
 body {
-    flex: 1; /* La imagen ocupa el 50% del ancho */
+    flex: 1;
     display: flex;
     justify-content: center;
     background-color: #23023B;
