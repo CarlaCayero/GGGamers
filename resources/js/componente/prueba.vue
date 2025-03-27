@@ -153,7 +153,7 @@ main {
 }
 .slides .slide {
     display: flex;
-    width: 98.9vw;
+    width: 98.8vw;
     height: 100vh;
     position: relative;
     overflow: hidden;
@@ -219,6 +219,11 @@ main {
     font-weight: bold;
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Sombra de texto para mayor contraste */
 }
+@media (max-width: 760px) {
+    .slides .slide {
+width: 100%;
+}
 
+}
 
 </style>
