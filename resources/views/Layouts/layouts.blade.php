@@ -11,7 +11,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/css/app.scss','resources/js/pablo.js'])
 </head>
-
 <body class="BodyClass">
 
     <nav class="Mynavbar">
@@ -28,31 +27,38 @@
                 </div>
             </a>
         @else
+            @if (Auth::user()->roles_id_rol == 2)
             <div class="UsuarioIcono">
                 <div class="icono">
+                    <div class="OpcionDesalir">
 
+                    </div>
                 </div>
                 <form action="{{ route('logout') }}" method="POST" style="display:inline;">
                     @csrf
-                    <button type="submit" class="btn btn-danger">Cerrar Sesión</button>
+                    <button type="submit" class="BotonDeAdministarr">Administrar</button>
                 </form>
             </div>
-            <img src="{{ asset('image/logo.png') }}" alt="my logo">
-            @if (Auth::user()->roles_id_rol == 2)
-                <div class="UsuarioIcono">
-                    <div class="BotonDeIcono">
-                        Mi torneo
-                    </div>
-                    <div class="BotonDeIcono">
-                        Sobre Nosotros
-                    </div>
-                </div>
             @else
-                <div class="UsuarioIcono">
-                    <div class="BotonDeIcono"></div>
-                    <div class="BotonDeIcono"></div>
+            <div class="UsuarioIcono">
+                <div class="icono">
+                    <div class="OpcionDesalir">
+
+                    </div>
                 </div>
+            </div>
             @endif
+
+            <img src="{{ asset('image/logo.png') }}" alt="my logo">
+            {{-- @if (Auth::user()->roles_id_rol == 2) --}}
+            <div class="BotonesDeLasOpciones">
+                <a href="{{ url('/') }}" class="PostNavBar">
+                    <div class="Myboton">Torneos</div>
+                </a>
+                <a href="{{ url('/') }}" class="PostNavBar">
+                    <div class="Myboton">Sobre Nosotros</div>
+                </a>
+            </div>
         @endif
 
     </nav>
