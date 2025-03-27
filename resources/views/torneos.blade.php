@@ -14,7 +14,12 @@
 @endsection
 
 @section('ContenidoDelMainMaldicion')
-<div id="app">
-    <pagina-torneos></pagina-torneos>
-</div>
+    <div id="app" class="row align-items-start">
+        <div class="col-3">
+            <pagina-torneos></pagina-torneos>
+        </div>
+        <div class="col-9">
+            <pagina-torneos></pagina-torneos>
+        </div>
+    </div>
 @endsection

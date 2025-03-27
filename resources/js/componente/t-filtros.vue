@@ -4,7 +4,7 @@
         <form>
             <!-- Filtro de Juegos -->
             <div class="f-juegos">
-                <h3 class="label">Nombre del Juego:</h3>
+                <h5 class="label">Nombre del Juego:</h5>
                 <select class="form-select" aria-label="Default select example" v-model="selectedJuegos">
                     <option v-for="juego in juegos" :key="juego.id_juego" :value="juego.nombre">
                         {{ juego.nombre }}
@@ -13,7 +13,7 @@
             </div>
             <!-- Filtro de PEGI -->
             <div class="f-pegi">
-                <h3 class="label">PEGI:</h3>
+                <h5 class="label">PEGI:</h5>
                 <select class="form-select" aria-label="Default select example" v-model="selectedPegi">
                     <option value="3">PEGI 3</option>
                     <option value="7">PEGI 7</option>
@@ -25,7 +25,7 @@
 
             <!-- Filtro de Categoría -->
             <div class="f-categoria">
-                <h3 class="label">Categoría:</h3>
+                <h5 class="label">Categoría:</h5>
                 <select class="form-select" aria-label="Default select example" v-model="selectedCategoria">
                     <option v-for="categoria in categorias" :key="categoria.id_categoria" :value="categoria.nombre">
                         {{ categoria.nombre }}
@@ -35,7 +35,7 @@
 
             <!-- Filtro de Plataforma -->
             <div class="f-plataforma">
-                <h3 class="label">Plataforma:</h3>
+                <h5 class="label">Plataforma:</h5>
                 <select class="form-select" aria-label="Default select example" v-model="selectedPlataforma">
                     <option v-for="plataforma in plataformas" :key="plataforma.id_plataforma" :value="plataforma.nombre">
                         {{ plataforma.nombre }}
@@ -107,7 +107,7 @@ export default {
     border: 1px solid #ccc; /* Color del contorn */
 }
 .container{
-    width: 500px;
+    width: 300px;
 
 }
 </style>
