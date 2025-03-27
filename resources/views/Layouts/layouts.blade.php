@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/css/app.scss','resources/js/pablo.js'])
+    @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/css/app.scss','resources/js/pablo.js','resources/css/torneos.css'])
 </head>
 <body class="BodyClass">
 

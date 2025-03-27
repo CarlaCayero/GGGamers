@@ -28,4 +28,8 @@ Route::post('/register', [UsuarioController::class, 'store'])->name('register.st
 
 Route::post('/logout', [UsuarioController::class, 'logout'])->name('logout');
 
+Route::get('/torneos', function() {
+    return view('torneos');
+});
+
 
