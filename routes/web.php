@@ -31,5 +31,8 @@ Route::post('/logout', [UsuarioController::class, 'logout'])->name('logout');
 Route::get('/torneos', function() {
     return view('torneos');
 });
+Route::get('/sobre-nosotros', function() {
+    return view('sobreNosotros');
+});
 
 
