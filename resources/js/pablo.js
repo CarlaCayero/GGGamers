@@ -4,18 +4,6 @@ document.addEventListener("DOMContentLoaded", function () {
         ".UsuarioIcono .OpcionDesalir"
     );
 
-    // Añadir el evento de click en el icono para mostrar u ocultar la opción
-    icono.addEventListener("click", function () {
-        if (
-            opcionDesalir.style.display === "none" ||
-            opcionDesalir.style.display === ""
-        ) {
-            opcionDesalir.style.display = "block";
-        } else {
-            opcionDesalir.style.display = "none";
-        }
-    });
-
     const navbar = document.querySelector(".Mynavbar");
 
     function applyNavbarAnimation() {
@@ -59,4 +47,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
     applyNavbarAnimation();
     window.addEventListener("resize", applyNavbarAnimation);
+
+        // Añadir el evento de click en el icono para mostrar u ocultar la opción
+        icono.addEventListener("click", function () {
+            if (
+                opcionDesalir.style.display === "none" ||
+                opcionDesalir.style.display === ""
+            ) {
+                opcionDesalir.style.display = "block";
+            } else {
+                opcionDesalir.style.display = "none";
+            }
+        });
 });

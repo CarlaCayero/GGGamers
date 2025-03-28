@@ -12,14 +12,38 @@ use Illuminate\Database\QueryException;
 
 class JuegoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    public function index(Request $request)
     {
-        $juegos = Juego::all();
+        $query = Juego::query();
+
+        // Filtro por nombre de juego
+        if ($request->has('juego') && $request->juego != '') {
+            $query->where('nombre', 'like', '%' . $request->juego . '%');
+        }
+
+        // Filtro por PEGI
+        if ($request->has('pegi') && $request->pegi != '') {
+            $query->where('pegi', $request->pegi);
+        }
+
+        if ($request->has('categoria') && $request->input('categoria') != '') {
+            $query->whereHas('categorias', function($q) use ($request) {
+                $q->where('nombre', 'like', '%' . $request->input('categoria') . '%');
+            });
+        }
+        if ($request->has('plataforma') && $request->input('plataforma') != '') {
+            $query->whereHas('plataformas', function($q) use ($request) {
+                $q->where('nombre', 'like', '%' . $request->input('plataforma') . '%');
+            });
+        }
+
+        // Obtener los juegos filtrados
+        $juegos = $query->get();
+
         return JuegoResource::collection($juegos);
     }
+
+
 
     /**
      * Store a newly created resource in storage.

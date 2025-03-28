@@ -316,6 +316,12 @@
     width: 100%;
     height: 100%;
 }
+
+.Fullwidth{
+    display: flex;
+    width: 100%;
+    height: auto;
+}
 /* Media 768 */
 
 @media (max-width: 850px) {

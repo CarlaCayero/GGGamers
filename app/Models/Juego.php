@@ -18,19 +18,14 @@ class Juego extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function plataformas()
-    {
-        return $this->belongsToMany(Plataforma::class, 'juegos_has_plataformas', 'id_juego', 'id_plataforma');
-    }
-
-    /**
-     * The roles that belong to the Juegos
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-     */
     public function categorias()
     {
-        return $this->belongsToMany(Categoria::class, 'juegos_has_categorias', 'id_juego', 'id_categoria');
+        return $this->belongsToMany(Categoria::class, 'juegos_has_categorias', 'juegos_id_juego', 'categorias_id_categoria');
+    }
+
+    public function plataformas()
+    {
+        return $this->belongsToMany(Plataforma::class, 'juegos_has_plataformas', 'juegos_id_juego', 'plataformas_id_plataforma');
     }
 
     /**

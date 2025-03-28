@@ -18,8 +18,8 @@ class Plataforma extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function juegos()
+    public function juego()
     {
-        return $this->belongsToMany(Juego::class, 'juegos_has_plataformas', 'id_plataforma', 'id_juego');
+        return $this->belongsToMany(Juego::class, 'juegos_has_plataformas', 'plataformas_id_plataforma','juegos_id_juego');
     }
 }
