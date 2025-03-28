@@ -18,8 +18,8 @@ class Categoria extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function juegos()
+    public function categorias()
     {
-        return $this->belongsToMany(Juego::class, 'juegos_has_categorias', 'id_categoria', 'id_juego');
+        return $this->belongsToMany(Juego::class, 'juegos_has_categorias', 'categorias_id_categoria','juegos_id_juego');
     }
 }
