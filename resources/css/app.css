@@ -53,6 +53,9 @@
     align-items: center;
     border-radius: 25px;
     font-size: 25px;
+    position: relative;
+    overflow: hidden;
+    transition: box-shadow 0.3s ease-in-out;
 }
 .ContenidoPrincipalDelXD {
     background-color: #23023b;
@@ -251,19 +254,34 @@
     width: 70px;
     height: 70px;
     margin-right: 10px;
-    background-color: #20F4FF;
+    background-color: #C6FF41;
     border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+.icono img{
+    width: 70%;
+    height: 70%;
+}
+
 .UsuarioIcono .icono .OpcionDesalir{
     position: absolute;
     display: none;
-    width: 150px;
-    height: 75px;
+    width: 120px;
+    height: auto;
     background-color: #C6FF41;
     top: 70%;
     left: 100px;
     transform: translateX(-50%);
     border-radius: 10px;
+}
+.OpcionDesalir form{
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .BotonDeIcono{
     width: 48%;
@@ -293,24 +311,52 @@
     text-decoration: none;
     color: black;
 }
-.BotonesDeLasOpciones .Myboton{
+.BotonesDeLasOpciones .Myboton {
     display: flex;
     width: 100%;
     height: 100%;
-    background-color:#C6FF41 ;
+    background-color: #C6FF41;
     justify-content: center;
     align-items: center;
     text-align: center;
     border-radius: 15px;
-    transition: box-shadow 0.3s ease-in-out;
+    position: relative;
+    overflow: hidden;
+    transition: box-shadow 0.7s ease-in-out;
 }
-.BotonesDeLasOpciones .Myboton:hover {
+
+.BotonesDeLasOpciones .Myboton::after , .IniciarSesion::after,
+.Registrarse::after{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 5px;
+    background-color: #23023b;
+    transition: width 0.3s ease-in-out, left 0.3s ease-in-out;
+}
+
+.BotonesDeLasOpciones .Myboton:hover, .IniciarSesion:hover,
+.Registrarse:hover{
     box-shadow: 0 0 15px 5px #C9FFFF;
 }
-.BotonDeAdministarr{
-    width: 110px;
-    height: 100%;
-    background-color:#C9FFFF ;
+
+.BotonesDeLasOpciones .Myboton:hover::after, .IniciarSesion:hover::after,
+.Registrarse:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+.BotonDeAdministarr, .BotondeLogots,.BotondeMirar{
+    width: 100%;
+    height: 50px;
+}
+.BotondeLogots{
+    background-color: red;
+}
+.BotondeMirar{
+    background-color: #C6FF41;
 }
 @keyframes pulsoBrillo {
     0% {
@@ -360,9 +406,6 @@
         flex-direction: column;
         flex-wrap: nowrap;
     }
-    .Myfooter1 {
-        width: 60%;
-    }
     .Myfooter2 {
         width: 40%;
     }
@@ -393,7 +436,6 @@
         height: 300px;
     }
     .ColaboladorMarcaImagen{
-        width: 40%;
         height: 120px;
     }
     .ColaboladoresDelMain h2{
@@ -407,6 +449,7 @@
     }
     .carouselIndex h2{
         font-size: 40px;
+        text-align: center;
     }
 }
 

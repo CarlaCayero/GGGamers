@@ -81,7 +81,7 @@
     </aside>
 
     <div id="app">
-        <prueba></prueba> <!-- Aquí se usa el componente 'prueba' -->
+        <prueba></prueba>
     </div>
 @endsection
 

@@ -25,12 +25,13 @@ document.addEventListener("DOMContentLoaded", function () {
         if (window.scrollY > 100) {
             gsap.to(navbar, {
                 duration: 1.5,
-                top: "25px",
+                top: "12.5px",
                 width: "80%",
                 left: "50%",
                 x: "-50%",
-                borderRadius: "15px",
+                borderRadius: "50px",
                 ease: "power2.out",
+                border: "solid 2px #C6FF41"
             });
         } else {
             gsap.to(navbar, {
@@ -41,6 +42,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 x: "0%",
                 borderRadius: "0px",
                 ease: "power2.out",
+                border: "solid 0px"
             });
         }
     }

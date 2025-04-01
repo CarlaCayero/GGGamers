@@ -31,20 +31,28 @@
             @if (Auth::user()->roles_id_rol == 2)
             <div class="UsuarioIcono">
                 <div class="icono">
+                    <img src="{{ asset('image/usuario.png') }}" alt="Usuario">
                     <div class="OpcionDesalir">
-
+                        <form action="{{ route('logout') }}" method="POST">
+                            @csrf
+                            <button type="submit" class="BotondeLogots">Salir</button>
+                        </form>
                     </div>
                 </div>
-                <form action="{{ route('logout') }}" method="POST" style="display:inline;">
-                    @csrf
-                    <button type="submit" class="BotonDeAdministarr">Administrar</button>
-                </form>
             </div>
             @else
             <div class="UsuarioIcono">
                 <div class="icono">
+                    <img src="{{ asset('image/usuario.png') }}" alt="Usuario">
                     <div class="OpcionDesalir">
-
+                        <form action="{{ route('logout') }}" method="POST">
+                            @csrf
+                            <button type="submit" class="BotondeLogots">Salir</button>
+                        </form>
+                        <form action="{{ route('logout') }}" method="POST">
+                            @csrf
+                            <button type="submit" class="BotondeMirar">Mirar Perfil</button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -53,7 +61,7 @@
             <img src="{{ asset('image/logo.png') }}" alt="my logo">
             {{-- @if (Auth::user()->roles_id_rol == 2) --}}
             <div class="BotonesDeLasOpciones">
-                <a href="{{ url('/') }}" class="PostNavBar">
+                <a href="{{ url('/torneos') }}" class="PostNavBar">
                     <div class="Myboton">Torneos</div>
                 </a>
                 <a href="{{ url('/sobre-nosotros') }}" class="PostNavBar">
