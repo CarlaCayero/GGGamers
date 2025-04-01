@@ -36,7 +36,7 @@ class JuegoController extends Controller
         });
     }
 
-    $juegos = $query->paginate(5);
+    $juegos = $query->paginate(6);
 
     return JuegoResource::collection($juegos);
 }

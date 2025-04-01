@@ -21,7 +21,7 @@
                     Iniciar Sesion
                 </div>
             </a>
-            <img src="{{ asset('image/logo.png') }}" alt="my logo">
+            <img src="{{ asset('image/logo/logo.png') }}" alt="my logo">
             <a href="{{ url('/register') }}" class="PreNavBar">
                 <div class="Registrarse">
                     Registrarse
@@ -31,7 +31,7 @@
             @if (Auth::user()->roles_id_rol == 2)
             <div class="UsuarioIcono">
                 <div class="icono">
-                    <img src="{{ asset('image/usuario.png') }}" alt="Usuario">
+                    <img src="{{ asset('image/logo/usuario.png') }}" alt="Usuario">
                     <div class="OpcionDesalir">
                         <form action="{{ route('logout') }}" method="POST">
                             @csrf
@@ -43,7 +43,7 @@
             @else
             <div class="UsuarioIcono">
                 <div class="icono">
-                    <img src="{{ asset('image/usuario.png') }}" alt="Usuario">
+                    <img src="{{ asset('image/logo/usuario.png') }}" alt="Usuario">
                     <div class="OpcionDesalir">
                         <form action="{{ route('logout') }}" method="POST">
                             @csrf
