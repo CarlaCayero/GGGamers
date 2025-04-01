@@ -1,0 +1,99 @@
+.n-contenido{
+    font-family: "Exo 2";
+    color: white;
+}
+.ContenidoMain {
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    background: #23023B;
+}
+.n-local{
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+    gap: 20px;
+    min-width: 300px;
+
+}
+/* Descripción */
+.n-carrousel{
+    flex: 1;
+    max-width: 50%;
+}
+.n-h1-contenido{
+    font-family: "Orbitron";
+}
+.n-p-contenido{
+    font-size: x-large;
+}
+.n-color-primario{
+    font-weight: bold;
+    color: #C6FF41;
+}
+.n-color-secundario{
+    font-weight: bold;
+    color: #20F4FF;
+}
+ /*Carrusel texto*/
+.carousel-container {
+    width: 100%;
+    max-width: 1000px;
+    margin: auto;
+    position: relative;
+}
+.carousel {
+    padding: 20px;
+    border-radius: 15px;
+    font-size: xx-large;
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+    transition: opacity 1s ease-in-out;
+}
+
+
+ /*Carrusel de imágenes*/
+ .image-carousel-container {
+    width: 80%;
+    max-width: 600px;
+    margin: 30px auto;
+    overflow: hidden;
+    border-radius: 15px;
+}
+.image-carousel {
+    display: flex;
+    width: 100%;
+    transition: transform 1s ease-in-out;
+}
+.image-carousel img {
+    width: 100%;
+    border-radius: 15px;
+}
+
+/* mapa */
+.n-mapa{
+    flex: 1;
+    max-width: 50%;
+    height: 800px;
+    width: 100%;
+    right: 10px;
+}
+
+@media (max-width: 768px){
+    .n-local {
+        flex-direction: row; /* Canvia a fila */
+        flex-wrap: wrap; /* Permet que els elements es moguin a la següent línia si no hi ha espai */
+        justify-content: center; /* Centra els elements */
+        align-items: center; /* Centra verticalment */
+    }
+
+    .n-carrousel, .n-mapa {
+        flex: 1 1 45%; /* Cada element ocupa el 45% de l'amplada */
+        max-width: 45%; /* Amplada màxima del 45% */
+        height: auto; /* Ajusta l'alçada automàticament */
+    }
+}
