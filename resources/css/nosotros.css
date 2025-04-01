@@ -11,6 +11,7 @@
 }
 .n-local{
     display: flex;
+    flex-direction: row;
     flex: 1;
     justify-content: space-between;
     gap: 20px;
@@ -83,17 +84,19 @@
     right: 10px;
 }
 
-@media (max-width: 768px){
+@media (max-width: 1500px){
     .n-local {
-        flex-direction: row; /* Canvia a fila */
+        flex-direction: column; /* Canvia a fila */
         flex-wrap: wrap; /* Permet que els elements es moguin a la següent línia si no hi ha espai */
         justify-content: center; /* Centra els elements */
         align-items: center; /* Centra verticalment */
     }
 
     .n-carrousel, .n-mapa {
-        flex: 1 1 45%; /* Cada element ocupa el 45% de l'amplada */
-        max-width: 45%; /* Amplada màxima del 45% */
+        max-width: 100%; /* Amplada completa per a cada element */
         height: auto; /* Ajusta l'alçada automàticament */
+    }
+    .n-mapa {
+        margin-top: 20px; /* Afegeix espai entre el carrusel i el mapa */
     }
 }
