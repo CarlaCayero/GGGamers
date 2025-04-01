@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>GG Gamers</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -18,7 +18,7 @@
         @if (!Auth::check())
             <a href="{{ url('/login') }}" class="PreNavBar">
                 <div class="IniciarSesion">
-                    Iniciar Sesion
+                    Iniciar Sesión
                 </div>
             </a>
             <img src="{{ asset('image/logo.png') }}" alt="my logo">
@@ -80,13 +80,13 @@
     <footer class="Myfooter">
         <div class="Myfooter1">
             <div class="MyFooterDiv">
-                Ubicación: C/Caracola 12, 08917, Barcelona
+                Ubicación: Plaza Urquinaona, 08010, Barcelona
             </div>
             <div class="MyFooterDiv">
-                Contacto: gg@gmail.com
+                Contacto: gggamers@gmail.com
             </div>
             <div class="MyFooterDiv">
-                Siguenos en:
+                Síguenos en:
                 <img src="{{ asset('image/facebook.png') }}" alt="my logo">
                 <img src="{{ asset('image/instagram.png') }}" alt="my logo">
                 <img src="{{ asset('image/twitter.png') }}" alt="my logo">

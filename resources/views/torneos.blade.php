@@ -1,14 +1,13 @@
 @extends('Layouts.layouts')
 @section('ContenidoPrincipalQueSeMuestra')
-    <img src="{{ asset('image/Starcraft2.gif') }}" alt="my logo" class="IMGINDEX">
+    <img src="{{ asset('image/logo/torneos.gif') }}" alt="my logo" class="IMGINDEX">
 
     <div class="shadow-dance-container">
-        <h1 class="shadow-dance-text">ÚNETE</h1>
+        <h1 class="shadow-dance-text">TORNEOS</h1>
     </div>
     <div class="ContenidoTexto">
         <p>
-            Toma tu lugar entre los campeones.
-            Selecciona tu juego y que comience el desafío.
+            El campo de batalla definitivo para los verdaderos jugadores.
         </p>
     </div>
 @endsection
