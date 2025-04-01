@@ -1,6 +1,5 @@
 <template>
     <div class="Torneo">
-      <div class="container noselect">
         <!-- Imagen que sirve de fondo -->
         <div class="canvas">
 
@@ -34,7 +33,6 @@
           </div>
         </div>
       </div>
-    </div>
   </template>
 
   <script>
