@@ -3,7 +3,7 @@
 <img src="{{ asset('image/nosotros/nosotros.gif') }}" alt="my logo" class="IMGINDEX">
 
     <div class="shadow-dance-container">
-        <h1 class="shadow-dance-text">Equipo Good Game</h1>
+        <h1 class="shadow-dance-text">EQUIPO GOOD GAME</h1>
     </div>
     <div class="ContenidoTexto">
         <p>Aquí no vienes solo a jugar, vienes a sentir la emoción de la competencia en vivo</p>
