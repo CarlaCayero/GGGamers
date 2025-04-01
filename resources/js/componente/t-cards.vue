@@ -30,7 +30,7 @@
           <div class="tracker tr-24"></div>
           <div class="tracker tr-25"></div>
           <div id="card">
-            <img :src="image" alt="Imagen del torneo" class="torneo-img" />
+            <img :src="image" :alt="nombre" class="torneo-img" />
           </div>
         </div>
       </div>
@@ -40,6 +40,7 @@
   <script>
   export default {
     props: {
+        nombre: String,
       image: String,
     },
   }
