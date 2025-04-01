@@ -56,7 +56,7 @@
                 <a href="{{ url('/') }}" class="PostNavBar">
                     <div class="Myboton">Torneos</div>
                 </a>
-                <a href="{{ url('/') }}" class="PostNavBar">
+                <a href="{{ url('/sobre-nosotros') }}" class="PostNavBar">
                     <div class="Myboton">Sobre Nosotros</div>
                 </a>
             </div>
