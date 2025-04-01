@@ -107,7 +107,7 @@ class UsuarioController extends Controller
             Auth::login($usuario);
 
             // Redirigir al usuario a la página de inicio
-            $response = redirect('/');
+            $response = redirect('/torneos');
         } catch (\Exception $ex) {
             // Si ocurre una excepción, mostrar mensaje de error y redirigir a la página de inicio de sesión
             $mensaje = Utilidad::errorMensaje($ex);

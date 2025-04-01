@@ -1,7 +1,7 @@
 <template>
-    <div class="container">
-        <h5>Filtros de búsqueda</h5>
-        <form @submit.prevent="submitForm">
+    <div class="Micontainer">
+        <h1>Filtros de búsqueda</h1>
+        <form @submit.prevent="submitForm" class="MiForm">
             <div class="f-juegos">
                 <h5 class="label">Nombre del Juego:</h5>
                 <input type="text" class="form-control" v-model="selectedJuegos" placeholder="Introduce el nombre del juego" />
@@ -40,14 +40,12 @@
 
             <!-- Botón de submit -->
             <div class="f-submit">
-                <button type="submit" class="btn btn-primary">Buscar</button>
+                <button type="submit" class="btn btn-secondary">Buscar</button>
+            </div>
+            <div class="ver-todos">
+            <button @click="verTodosJuegos" class="btn btn-light">Ver todos los juegos</button>
             </div>
         </form>
-
-        <!-- Enlace para mostrar todos los juegos -->
-        <div class="ver-todos">
-            <button @click="verTodosJuegos" class="btn btn-secondary">Ver todos los juegos</button>
-        </div>
     </div>
 </template>
 
@@ -123,6 +121,19 @@ export default {
 </script>
 
 <style scoped>
+.Micontainer{
+    color: white;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: 'Exo 2', sans-serif;
+    padding: 10px;
+}
+.MiForm{
+    width: 65%;
+}
 .form-select, .form-control {
     font-family: "Exo 2";
     width: 100%;
@@ -134,6 +145,7 @@ export default {
 }
 
 .btn {
+    margin-top: 10px;
     font-family: "Exo 2";
     width: 100%;
     height: 3rem;
@@ -142,12 +154,8 @@ export default {
     border-radius: 0.5rem;
 }
 
-.container{
-    width: 300px;
-}
 
 .ver-todos {
-    margin-top: 1rem;
     text-align: center;
 }
 

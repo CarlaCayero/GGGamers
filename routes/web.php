@@ -18,7 +18,9 @@ use App\Http\Controllers\UsuarioController;
 Route::get('/', function () {
     return view('home');
 });
-
+Route::get('/torneos', function () {
+    return view('torneos');
+});
 Route::get('/login', [UsuarioController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [UsuarioController::class, 'login'])->name('login.submit');
 
