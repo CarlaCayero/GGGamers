@@ -114,6 +114,9 @@
     object-fit: cover;
     opacity: 0.7;
     z-index: 0;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
 }
 .shadow-dance-text {
     letter-spacing: 20px;
@@ -139,8 +142,17 @@
     align-items: center;
     background-color: black;
 }
+.shadow-dance-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
 .shadow-dance-container,
 .ContenidoTexto {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     z-index: 1;
 }
 

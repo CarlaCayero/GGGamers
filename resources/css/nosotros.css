@@ -78,6 +78,22 @@
 .n-mapa{
     flex: 1;
     max-width: 50%;
-    background-color: #c9fdff; /* Color de fondo para visualizar */
-    height: 300px;
+    height: 800px;
+    width: 100%;
+    right: 10px;
+}
+
+@media (max-width: 768px){
+    .n-local {
+        flex-direction: row; /* Canvia a fila */
+        flex-wrap: wrap; /* Permet que els elements es moguin a la següent línia si no hi ha espai */
+        justify-content: center; /* Centra els elements */
+        align-items: center; /* Centra verticalment */
+    }
+
+    .n-carrousel, .n-mapa {
+        flex: 1 1 45%; /* Cada element ocupa el 45% de l'amplada */
+        max-width: 45%; /* Amplada màxima del 45% */
+        height: auto; /* Ajusta l'alçada automàticament */
+    }
 }
