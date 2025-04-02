@@ -7,7 +7,7 @@
                     <div
                         class="background"
                         style="
-                            background-image:  url('image/mk1.jpg');
+                            background-image:  url('image/juegos/mk1.jpg');
                         "
                     ></div>
                     <div class="content">ENTRA AL COMBATE, DEMUESTRA TU PODER
@@ -19,7 +19,7 @@
                     <div
                         class="background"
                         style="
-                            background-image:  url('image/fornite.jpg');
+                            background-image:  url('image/juegos/valorant.jpg');
                         "
                     ></div>
                     <div class="content">SOLO LOS MEJORES ALCANZAN LA GLORIA
@@ -31,7 +31,7 @@
                     <div
                         class="background"
                         style="
-                            background-image:  url('image/cod6.jpg');
+                            background-image:  url('image/juegos/cod6.png');
                         "
                     ></div>
                     <div class="content">JUEGA DURO, GANA CON HONOR</div>
@@ -41,7 +41,7 @@
                     <div
                         class="background"
                         style="
-                            background-image:  url('image/Hearthstone.jpg');
+                            background-image:  url('image/juegos/Hearthstone.jpg');
                         "
                     ></div>
                     <div class="content">CADA PARTIDA ES UNA NUEVA OPORTUNIDAD</div>
@@ -51,7 +51,7 @@
                     <div
                         class="background"
                         style="
-                            background-image:  url('image/mario.jpg');
+                            background-image:  url('image/juegos/mario.jpg');
                         "
                     ></div>
                     <div class="content">LA VICTORIA PERTENECE A LOS PERSEVERANTES</div>
@@ -61,7 +61,7 @@
                     <div
                         class="background"
                         style="
-                            background-image:  url('image/tft.jpg');
+                            background-image:  url('image/juegos/tft.jpg');
                         "
                     ></div>
                     <div class="content">ENTRENA, COMPITE, CONQUISTA</div>
@@ -141,7 +141,7 @@ main {
 .slides {
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 97.3vw;
     position: relative;
     z-index: 1;
     background-color: #23023B;

@@ -16,14 +16,14 @@
 
     <nav class="Mynavbar">
         @if (!Auth::check())
-            <a href="{{ url('/login') }}" class="PreNavBar">
-                <div class="IniciarSesion">
-                    Iniciar Sesión
+            <a href="{{ url('/login') }}" class="PreNavBar" >
+                <div class="IniciarSesion" tabindex="1">
+                    Iniciar Sesion
                 </div>
             </a>
-            <img src="{{ asset('image/logo/logo.png') }}" alt="my logo">
+            <img src="{{ asset('image/logo/logo.png') }}" alt="my logo" >
             <a href="{{ url('/register') }}" class="PreNavBar">
-                <div class="Registrarse">
+                <div class="Registrarse" tabindex="2">
                     Registrarse
                 </div>
             </a>
@@ -49,8 +49,7 @@
                             @csrf
                             <button type="submit" class="BotondeLogots">Salir</button>
                         </form>
-                        <form action="{{ route('logout') }}" method="POST">
-                            @csrf
+                        <form action="{{ route('Profile', ['id_usuario' => Auth::user()->id_usuario]) }}" method="GET">
                             <button type="submit" class="BotondeMirar">Mirar Perfil</button>
                         </form>
                     </div>

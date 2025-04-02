@@ -1,6 +1,6 @@
 @extends('Layouts.layouts')
 @section('ContenidoPrincipalQueSeMuestra')
-    <img src="{{ asset('image/juegos/Starcraft2.gif') }}" alt="my logo" class="IMGINDEX">
+    <img src="{{ asset('image/logo/index.gif') }}" alt="my logo" class="IMGINDEX">
 
     <div class="shadow-dance-container">
         <h1 class="shadow-dance-text">ÚNETE</h1>
@@ -19,28 +19,28 @@
         <div class="swiper mySwiper">
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
-                    <img src="{{ asset('image/juegos/fornite.jpg') }}" alt="Imagen 1">
+                    <img src="{{ asset('image/juegos/cod6.png') }}" alt="Imagen 1">
                 </div>
                 <div class="swiper-slide">
                     <img src="{{ asset('image/juegos/fornite.jpg') }}" alt="Imagen 2">
                 </div>
                 <div class="swiper-slide">
-                    <img src="{{ asset('image/juegos/fornite.jpg') }}" alt="Imagen 3">
+                    <img src="{{ asset('image/juegos/diablo4.png') }}" alt="Imagen 3">
                 </div>
                 <div class="swiper-slide">
-                    <img src="{{ asset('image/juegos/fornite.jpg') }}" alt="Imagen 4">
+                    <img src="{{ asset('image/juegos/supersmashbros.png') }}" alt="Imagen 4">
                 </div>
                 <div class="swiper-slide">
-                    <img src="{{ asset('image/juegos/fornite.jpg') }}" alt="Imagen 3">
+                    <img src="{{ asset('image/juegos/mario.jpg') }}" alt="Imagen 3">
                 </div>
                 <div class="swiper-slide">
-                    <img src="{{ asset('image/juegos/fornite.jpg') }}" alt="Imagen 4">
+                    <img src="{{ asset('image/juegos/valorant.jpg') }}" alt="Imagen 4">
                 </div>
                 <div class="swiper-slide">
-                    <img src="{{ asset('image/juegos/fornite.jpg') }}" alt="Imagen 3">
+                    <img src="{{ asset('image/juegos/tft.jpg') }}" alt="Imagen 3">
                 </div>
                 <div class="swiper-slide">
-                    <img src="{{ asset('image/juegos/fornite.jpg') }}" alt="Imagen 4">
+                    <img src="{{ asset('image/juegos/mk1.jpg') }}" alt="Imagen 4">
                 </div>
 
             </div>

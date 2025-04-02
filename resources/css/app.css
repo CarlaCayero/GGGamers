@@ -337,16 +337,25 @@
     transition: width 0.3s ease-in-out, left 0.3s ease-in-out;
 }
 
-.BotonesDeLasOpciones .Myboton:hover, .IniciarSesion:hover,
-.Registrarse:hover{
+.BotonesDeLasOpciones .Myboton:hover,
+.BotonesDeLasOpciones .Myboton:focus,
+.IniciarSesion:hover,
+.IniciarSesion:focus,
+.Registrarse:hover,
+.Registrarse:focus {
     box-shadow: 0 0 15px 5px #C9FFFF;
 }
 
-.BotonesDeLasOpciones .Myboton:hover::after, .IniciarSesion:hover::after,
-.Registrarse:hover::after {
+.BotonesDeLasOpciones .Myboton:hover::after,
+.BotonesDeLasOpciones .Myboton:focus::after,
+.IniciarSesion:hover::after,
+.IniciarSesion:focus::after,
+.Registrarse:hover::after,
+.Registrarse:focus::after {
     width: 100%;
     left: 0;
 }
+
 
 .BotonDeAdministarr, .BotondeLogots,.BotondeMirar{
     width: 100%;
