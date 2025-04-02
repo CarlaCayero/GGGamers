@@ -5,7 +5,7 @@
         </div>
         <div class="FiltroJuego">
             <div class="ContenedorDeTornoes">
-                <torneos-cards v-for="(torneo, index) in torneos" :key="index" :image="torneo.rutas" :nombre="torneo.nombre" />
+                <torneos-cards v-for="(torneo, index) in torneos" :key="index" :image="torneo.rutas" :nombre="torneo.nombre" :juegoID="torneo.id_juego" />
             </div>
             <div class="pagination">
             <button :disabled="currentPage === 1" @click="cambiarPagina(currentPage - 1)">Anterior</button>
