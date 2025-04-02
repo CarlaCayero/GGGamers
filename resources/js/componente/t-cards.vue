@@ -1,5 +1,5 @@
 <template>
-    <div class="Torneo">
+    <div class="Torneo" @click="goToGame">
         <div class="canvas">
 
           <div class="tracker tr-1"></div>
@@ -37,9 +37,16 @@
   <script>
   export default {
     props: {
-        nombre: String,
+      nombre: String,
       image: String,
+      juegoID: Number,
     },
+    methods: {
+  goToGame() {
+    const baseURL = window.location.origin + "/GGGamers/public";
+    window.location.href = `${baseURL}/eventos/${this.juegoID}`;
+  }
+}
   }
   </script>
 
