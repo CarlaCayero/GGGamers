@@ -1,6 +1,5 @@
 <template>
     <div class="Torneo">
-        <!-- Imagen que sirve de fondo -->
         <div class="canvas">
 
           <div class="tracker tr-1"></div>

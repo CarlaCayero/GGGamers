@@ -30,6 +30,11 @@ Route::post('/register', [UsuarioController::class, 'store'])->name('register.st
 
 Route::post('/logout', [UsuarioController::class, 'logout'])->name('logout');
 
+Route::get('/profile/{id_usuario}', function($id_usuario) {
+    $user = App\Models\Usuario::where('id_usuario', $id_usuario)->first();
+    return view('MyProfile', compact('user'));
+})->name('Profile');
+
 Route::get('/torneos', function() {
     return view('torneos');
 });
