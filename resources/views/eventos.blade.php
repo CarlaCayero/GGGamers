@@ -12,6 +12,6 @@
     @endsection
 @section('ContenidoDelMainMaldicion')
 <div id="app">
-    <evento juego-id="{{ $juego->id_juego }}" ></evento>
+    <evento juego-id="{{ $juego->id_juego }}" :eventos="{{ json_encode($eventos)}}"></evento>
 </div>
 @endsection
