@@ -28,13 +28,8 @@ class Juego extends Model
         return $this->belongsToMany(Plataforma::class, 'juegos_has_plataformas', 'juegos_id_juego', 'plataformas_id_plataforma');
     }
 
-    /**
-     * Get all of the comments for the Juego
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function participantes()
+    public function evento()
     {
-        return $this->hasMany(Participar::class, 'id_juego');
+        return $this->hasMany(Evento::class, 'id_evento');
     }
 }

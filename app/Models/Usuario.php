@@ -17,7 +17,7 @@ class Usuario extends Authenticatable
 
     public function rol()
     {
-        return $this->belongsTo(Rol::class, 'rols_id');
+        return $this->belongsTo(Rol::class, 'id_rol');
     }
 
     /**
@@ -25,8 +25,8 @@ class Usuario extends Authenticatable
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function participantes()
+    public function eventos()
     {
-        return $this->hasMany(Participar::class, 'id_usuario');
+        return $this->hasMany(Evento::class, 'id_evento');
     }
 }

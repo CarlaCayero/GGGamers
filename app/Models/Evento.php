@@ -28,9 +28,22 @@ class Evento extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function participantes()
+    public function usuarios()
     {
-        return $this->hasMany(Participar::class, 'id_evento');
+        return $this->hasMany(Usuario::class, 'id_usuario');
     }
+
+    /**
+     * Get all of the comments for the Juego
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function juegos()
+    {
+        return $this->belongsTo(Juego::class, 'id_juego');
+    }
+
+
+
 
 }
