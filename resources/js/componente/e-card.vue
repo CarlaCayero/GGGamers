@@ -1,11 +1,11 @@
 <template>
     <div>
-        <div class="container">
-            <div class="card">
-                <h5 class="card-header">TITULO</h5>
+        <div v-if="eventos.length" class="container">
+            <div v-for="evento in eventos" :key="evento.id_evento" class="card">
+                <h5 class="card-header">{{  evento.nombre }}</h5>
                 <div class="card-body">
-                    <h5 class="card-title">FECHA HORA</h5>
-                    <p class="card-text">descricion</p>
+                    <h5 class="card-title">{{ evento.Fecha_inicio }} / {{ evento.Fecha_fin }}</h5>
+                    <p class="card-text">{{ evento.descripcion }}</p>
                     <p class="card-text">Plataforma</p>
                     <p class="card-text">Espacio</p>
                     <p class="card-text">Participantes</p>
@@ -13,11 +13,18 @@
                 </div>
             </div>
         </div>
+        <div v-else>
+            <p>No hay eventos disponibles para este juego.</p>
+        </div>
     </div>
 </template>
 
 <script>
 export default {
+    props: {
+        juegoId: Number,
+        eventos: Array
+    },
 }
 </script>
 

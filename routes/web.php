@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Juego;
+use App\Models\Evento;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\Api\JuegoController;
@@ -38,7 +39,8 @@ Route::get('/profile/{id_usuario}', function($id_usuario) {
 
 Route::get('/eventos/{id_juego}', function($id_juego) {
     $juego = Juego::where('id_juego', $id_juego)->first();
-    return view('eventos', compact('juego'));
+    $eventos = Evento::where('juegos_id_juego', $id_juego)->get();
+    return view('eventos', compact('juego','eventos'));
 })->name('eventos.detalle');
 
 Route::get('/torneos', function() {
