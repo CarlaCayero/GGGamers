@@ -57,7 +57,7 @@
             </div>
             @endif
 
-            <img src="{{ asset('image/logo.png') }}" alt="my logo">
+            <img src="{{ asset('image/logo/logo.png') }}" alt="my logo">
             {{-- @if (Auth::user()->roles_id_rol == 2) --}}
             <div class="BotonesDeLasOpciones">
                 <a href="{{ url('/torneos') }}" class="PostNavBar">
@@ -86,10 +86,10 @@
             </div>
             <div class="MyFooterDiv">
                 Síguenos en:
-                <img src="{{ asset('image/facebook.png') }}" alt="my logo">
-                <img src="{{ asset('image/instagram.png') }}" alt="my logo">
-                <img src="{{ asset('image/twitter.png') }}" alt="my logo">
-                <img src="{{ asset('image/discord.png') }}" alt="my logo">
+                <img src="{{ asset('image/logo/facebook.png') }}" alt="my logo">
+                <img src="{{ asset('image/logo/instagram.png') }}" alt="my logo">
+                <img src="{{ asset('image/logo/twitter.png') }}" alt="my logo">
+                <img src="{{ asset('image/logo/discord.png') }}" alt="my logo">
             </div>
         </div>
         <div class="Myfooter2">

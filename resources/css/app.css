@@ -221,7 +221,7 @@
 .ColaboladorMarca{
     display: flex;
     margin-top: 10px;
-    width: 83%;
+    width: 80%;
     height: auto;
     justify-content: space-around;
     flex-direction: row;
@@ -230,7 +230,7 @@
 }
 
 .ColaboladorMarcaImagen {
-    width: 300px;
+    width: 400px;
     height: 100px;
     display: flex;
     align-items: center;
@@ -354,6 +354,15 @@
 .Registrarse:focus::after {
     width: 100%;
     left: 0;
+}
+
+.containerPerfil{
+    display: flex;
+    width: 100%;
+    height: auto;
+    min-height: 200px;
+    justify-content: center;
+    align-items: center;
 }
 
 

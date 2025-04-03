@@ -1,7 +1,7 @@
 @extends('Layouts.layoutsAuth')
 
 @section('titulo')
-        <img src="{{ asset('image/logo.png') }}" alt="Logotipo" id="img-logo" >
+        <img src="{{ asset('image/logo/logo.png') }}" alt="Logotipo" id="img-logo" >
         <h2 id="h2-titulo">INICIA SESIÓN</h2>
 
 @endsection

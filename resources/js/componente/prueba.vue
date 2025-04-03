@@ -141,7 +141,7 @@ main {
 .slides {
     display: flex;
     flex-direction: column;
-    width: 97.3vw;
+    width: 97vw;
     position: relative;
     z-index: 1;
     background-color: #23023B;
