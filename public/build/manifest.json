@@ -1,24 +1,44 @@
 {
   "resources/css/app.css": {
-    "file": "assets/app-269274a6.css",
+    "file": "assets/app-a8d72e25.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
   "resources/css/app.scss": {
-    "file": "assets/app-391a3b55.css",
+    "file": "assets/app-edf8c1c1.css",
     "isEntry": true,
     "src": "resources/css/app.scss"
   },
+  "resources/css/nosotros.css": {
+    "file": "assets/nosotros-83d348d0.css",
+    "isEntry": true,
+    "src": "resources/css/nosotros.css"
+  },
+  "resources/css/torneos.css": {
+    "file": "assets/torneos-d2ec1543.css",
+    "isEntry": true,
+    "src": "resources/css/torneos.css"
+  },
   "resources/js/app.css": {
-    "file": "assets/app-4fcaf4c0.css",
+    "file": "assets/app-12165ee2.css",
     "src": "resources/js/app.css"
   },
   "resources/js/app.js": {
     "css": [
-      "assets/app-4fcaf4c0.css"
+      "assets/app-12165ee2.css"
     ],
-    "file": "assets/app-6125ddac.js",
+    "file": "assets/app-91c968b6.js",
     "isEntry": true,
     "src": "resources/js/app.js"
+  },
+  "resources/js/nosotros.js": {
+    "file": "assets/nosotros-4b4f8cb2.js",
+    "isEntry": true,
+    "src": "resources/js/nosotros.js"
+  },
+  "resources/js/pablo.js": {
+    "file": "assets/pablo-271b59c9.js",
+    "isEntry": true,
+    "src": "resources/js/pablo.js"
   }
 }
