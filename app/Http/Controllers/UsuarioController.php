@@ -14,12 +14,12 @@ class UsuarioController extends Controller
 
     public function showLoginForm()
     {
-        return view("auth.Login");
+        return view("Auth.Login");
     }
 
     public function showRegisterForm()
     {
-        return view("auth.register");
+        return view("Auth.Register");
     }
     /**
      * Display a listing of the resource.

@@ -9,6 +9,11 @@
     "isEntry": true,
     "src": "resources/css/app.scss"
   },
+  "resources/css/auth.css": {
+    "file": "assets/auth-cad269e2.css",
+    "isEntry": true,
+    "src": "resources/css/auth.css"
+  },
   "resources/css/nosotros.css": {
     "file": "assets/nosotros-83d348d0.css",
     "isEntry": true,
@@ -27,9 +32,14 @@
     "css": [
       "assets/app-12165ee2.css"
     ],
-    "file": "assets/app-91c968b6.js",
+    "file": "assets/app-14bb5576.js",
     "isEntry": true,
     "src": "resources/js/app.js"
+  },
+  "resources/js/authBgAnimation.js": {
+    "file": "assets/authBgAnimation-8eecec90.js",
+    "isEntry": true,
+    "src": "resources/js/authBgAnimation.js"
   },
   "resources/js/nosotros.js": {
     "file": "assets/nosotros-4b4f8cb2.js",

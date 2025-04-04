@@ -12,16 +12,6 @@ use Illuminate\Database\QueryException;
 class EventoController extends Controller
 {
 
-    public function eventosPorJuego($id_juego)
-    {
-        // Obtener los eventos del juego con el ID recibido
-        $eventos = Evento::where('id_juego', $id_juego)->get();
-
-        // Retornar los eventos como JSON
-        return response()->json($eventos);
-    }
-
-
     /**
      * Display a listing of the resource.
      */
