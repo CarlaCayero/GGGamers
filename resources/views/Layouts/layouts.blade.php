@@ -45,12 +45,12 @@
                 <div class="icono">
                     <img src="{{ asset('image/logo/usuario.png') }}" alt="Usuario">
                     <div class="OpcionDesalir">
+                        <form action="{{ route('Profile', ['id_usuario' => Auth::user()->id_usuario]) }}" method="GET">
+                            <button type="submit" class="BotondeMirar">Mirar Perfil</button>
+                        </form>
                         <form action="{{ route('logout') }}" method="POST">
                             @csrf
                             <button type="submit" class="BotondeLogots">Salir</button>
-                        </form>
-                        <form action="{{ route('Profile', ['id_usuario' => Auth::user()->id_usuario]) }}" method="GET">
-                            <button type="submit" class="BotondeMirar">Mirar Perfil</button>
                         </form>
                     </div>
                 </div>
