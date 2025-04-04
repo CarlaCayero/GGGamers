@@ -30,7 +30,6 @@ Route::apiResource('categorias', CategoriaController::class);
 Route::apiResource('espacios', EspacioController::class);
 Route::apiResource('eventos', EventoController::class);
 Route::apiResource('juegos', JuegoController::class);
-Route::apiResource('usuarios_has_eventos', ParticiparController::class);
 Route::apiResource('plataformas', PlataformaController::class);
 Route::apiResource('roles', RolController::class);
 Route::apiResource('usuarios', UsuarioController::class);

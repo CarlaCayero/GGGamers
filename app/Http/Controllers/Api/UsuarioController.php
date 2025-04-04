@@ -14,9 +14,17 @@ class UsuarioController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $usuarios = Usuario::all();
+        $query = Usuario::query();
+
+        // Corregir la comprobación del parámetro y usar 'id_usuario' en lugar de 'usuarios'
+        if ($request->has('id_usuario') && $request->id_usuario != '') {
+            $query->where('id_usuario', $request->id_usuario);
+        }
+
+        $usuarios = $query->with('rol')->get();
+
         return UsuarioResource::collection($usuarios);
     }
 

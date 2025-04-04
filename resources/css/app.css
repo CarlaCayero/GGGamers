@@ -271,7 +271,7 @@
     width: 120px;
     height: auto;
     background-color: #C6FF41;
-    top: 70%;
+    top: 100%;
     left: 100px;
     transform: translateX(-50%);
     border-radius: 10px;
@@ -368,7 +368,7 @@
 
 .BotonDeAdministarr, .BotondeLogots,.BotondeMirar{
     width: 100%;
-    height: 50px;
+    height: 100%;
 }
 .BotondeLogots{
     background-color: red;
@@ -398,7 +398,6 @@
     width: 100%;
     height: auto;
 }
-/* Media 768 */
 
 @media (max-width: 850px) {
     .BotonesDeLasOpciones{
