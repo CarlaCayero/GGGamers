@@ -15,7 +15,7 @@
             </div>
         </div>
         <div v-else class="text-center">
-            <p>No hay eventos disponibles para este juego.</p>
+            <p class="alert alert-warning text-center">No hay eventos disponibles para este juego.</p>
         </div>
     </div>
 </template>
@@ -87,6 +87,7 @@ export default {
     padding: 20px;
     border-radius: 10px;
     margin: 10px;
+    border: #c6ff41 3px solid;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
     width: 300px; /* Tamaño fijo para las tarjetas */
     text-align: center;
@@ -112,13 +113,6 @@ export default {
 .btn-primary:hover {
     background-color: #c6ff41;
 }
-.container {
-    display: flex; /* Activa el modelo de Flexbox */
-    flex-wrap: wrap; /* Permite que las tarjetas se ajusten en varias filas si es necesario */
-    justify-content: center; /* Centra las tarjetas horizontalmente */
-    align-items: center; /* Centra las tarjetas verticalmente */
-    min-height: 100vh; /* Asegura que el contenedor ocupe toda la altura de la ventana */
-    padding: 20px;
-}
+
 
 </style>
