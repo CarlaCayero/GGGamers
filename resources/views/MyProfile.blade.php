@@ -13,7 +13,8 @@
 
 @section('ContenidoDelMainMaldicion')
 <div id="app" class="containerPerfil">
-    <perfil :userId="{{ {{--$user->id_usuario--}} Auth::user()->id_usuario  }}"></perfil>
+    <perfil :user-id='@json(Auth::user()->id_usuario)'></perfil>
+
 </div>
 @endsection
 

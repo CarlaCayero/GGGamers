@@ -15,6 +15,14 @@ class Usuario extends Authenticatable
     protected $primaryKey = 'id_usuario';
     public $timestamps = false;
 
+
+    protected $fillable = [
+        'nombre',
+        'edad',
+        'contraseña',
+        'imagen',
+    ];
+
     public function rol()
     {
         return $this->belongsTo(Rol::class, 'roles_id_rol');
