@@ -28,6 +28,24 @@ class UsuarioController extends Controller
         return UsuarioResource::collection($usuarios);
     }
 
+    public function update(Request $request, Usuario $usuario)
+    {
+        // Asignación manual de los campos
+        $usuario->nombre = $request->input('nombre');
+        $usuario->mail = $request->input('mail');
+        $usuario->edad = $request->input('edad');
+
+        try {
+            $usuario->save();
+
+            return response()->json($usuario, 200);
+        } catch (QueryException $ex) {
+            $mensaje = Utilidad::errorMensaje($ex);
+            return response()->json(["error" => $mensaje], 400);
+        }
+    }
+
+
     /**
      * Store a newly created resource in storage.
      */
@@ -62,22 +80,7 @@ class UsuarioController extends Controller
 
     /**
      * Update the specified resource in storage.
-     */
-    public function update(Request $request, Usuario $usuario)
-    {
-        $usuario->nombre = $request->input('nombre');
-        $usuario->mail = $request->input('mail');
-        $usuario->contrasenya = $request->input('contrasenya');
-        $usuario->edad = $request->input('edad');
-        $usuario->roles_id_rol = $request->input('roles_id_rol');
-        try {
-            $usuario->save();
-            return (new UsuarioController($usuario))->response()->setStatusCode(200);
-        } catch (QueryException $ex) {
-            $mensaje = Utilidad::errorMensaje($ex);
-            return response()->json(["error" => $mensaje], 400);
-        }
-    }
+     *
 
     /**
      * Remove the specified resource from storage.
