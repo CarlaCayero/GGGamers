@@ -59,6 +59,7 @@ export default {
         `;
             QRCode.toDataURL(qrData)
                 .then(url => {
+                    console.log('QR Code generado:', url);
                     this.qrCode = url;
                     this.qrEventoId = evento.id_evento;
 
@@ -66,7 +67,25 @@ export default {
                     const usuarioEmail = prompt("Introduce tu correo electrónico:");
 
                     // Enviar el QR por correo
-                    axios.post('/api/enviar-qr', {
+                    axios.post('/enviar-qr', {
+                        qrCode: url,
+                        evento: {
+                            nombre: evento.nombre,
+                            descripcion: evento.descripcion,
+                            fecha_inicio: evento.fecha_inicio,
+                            fecha_fin: evento.fecha_fin,
+                        },
+                        email: usuarioEmail
+                    })
+                        .then(response => {
+                            alert('Correo enviado con éxito.');
+                        })
+                        .catch(error => {
+                            console.error('Error al enviar el correo:', error.response ? error.response.data : error);
+                        });
+
+                    // Agrega este log para verificar los datos enviados
+                    console.log('Datos enviados al backend:', {
                         qrCode: url,
                         evento: {
                             nombre: evento.nombre,
@@ -75,13 +94,7 @@ export default {
                             descripcion: evento.descripcion,
                         },
                         email: usuarioEmail
-                    })
-                        .then(response => {
-                            alert('Correo enviado con éxito.');
-                        })
-                        .catch(error => {
-                            console.error('Error al enviar el correo:', error);
-                        });
+                    });
                 })
                 .catch(error => {
                     console.error("Error al generar el código QR:", error);

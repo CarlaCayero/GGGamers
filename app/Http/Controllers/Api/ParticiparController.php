@@ -11,6 +11,8 @@ class ParticiparController extends Controller
 {
     public function enviarQR(Request $request)
     {
+
+        \Log::info('Datos recibidos:', $request->all());
         $qrCode = $request->input('qrCode');
         $evento = $request->input('evento');
         $usuarioEmail = $request->input('email');

@@ -17,7 +17,7 @@ class QRCodeMail extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct()
+    public function __construct(string $qrCode, array $evento)
     {
         $this->qrCode = $qrCode;
         $this->evento = $evento;
@@ -33,15 +33,6 @@ class QRCodeMail extends Mailable
         );
     }
 
-    /**
-     * Get the message content definition.
-     */
-    public function content(): Content
-    {
-        return new Content(
-            view: 'view.name',
-        );
-    }
 
     /**
      * Get the attachments for the message.
