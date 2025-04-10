@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -14,36 +13,27 @@ class Evento extends Model
     public $timestamps = false;
 
     /**
-     * Get the user that owns the Evento
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * Relación con Espacio
      */
     public function espacio()
     {
-        return $this->belongsTo(Espacio::class, 'id_espacio');
+        return $this->belongsTo(Espacio::class, 'espacios_id_espacio');
     }
 
     /**
-     * Get all of the comments for the Juego
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * Relación muchos a muchos con usuarios
      */
     public function usuarios()
     {
-        return $this->hasMany(Usuario::class, 'id_usuario');
+        return $this->belongsToMany(Usuario::class, 'evento_usuario', 'evento_id_evento', 'usuario_id_usuario')
+            ->withPivot('posicion');  // Incluye la columna 'posicion' en la tabla pivot
     }
 
     /**
-     * Get all of the comments for the Juego
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * Relación con Juego
      */
     public function juegos()
     {
-        return $this->belongsTo(Juego::class, 'id_juego');
+        return $this->belongsTo(Juego::class, 'juegos_id_juego');
     }
-
-
-
-
 }
