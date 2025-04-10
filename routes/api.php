@@ -33,6 +33,5 @@ Route::apiResource('juegos', JuegoController::class);
 Route::apiResource('plataformas', PlataformaController::class);
 Route::apiResource('roles', RolController::class);
 Route::apiResource('usuarios', UsuarioController::class);
-
-
+Route::post('enviar-qr', [ParticiparController::class, 'enviarQR']);
 
