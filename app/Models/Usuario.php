@@ -35,6 +35,7 @@ class Usuario extends Authenticatable
      */
     public function eventos()
     {
-        return $this->hasMany(Evento::class, 'id_evento');
+        return $this->belongsToMany(Evento::class, 'evento_usuario', 'usuario_id_usuario', 'evento_id_evento')
+            ->withPivot('posicion');  // Esto incluye la columna 'posicion' de la tabla pivot
     }
 }

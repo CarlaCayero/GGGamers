@@ -11,21 +11,78 @@
             <div class="cardUser">
                 <div class="cardIcon"></div>
                 <div class="userDetails">
-                    <p><strong>Nombre:</strong> {{ MiUsuario.nombre }}</p>
-                    <p><strong>Email:</strong> {{ MiUsuario.mail }}</p>
-                    <p><strong>Edad:</strong> {{ MiUsuario.edad }}</p>
-                    <p>
+                    <!-- <p>
                         <strong>Rol:</strong>
                         {{
                             MiUsuario.rol ? MiUsuario.rol.nombre : "No asignado"
                         }}
-                    </p>
+                    </p> -->
                 </div>
             </div>
             <div class="cardinfo">
+                <div class="cardinfoName">
+                    <div class="cardinfoNameUser">
+                        <h4>Nombre: {{ MiUsuario.nombre }}</h4>
+                    </div>
+                    <div class="cardinfoNameYear">
+                        <h4>Edad: {{ MiUsuario.edad }}</h4>
+                    </div>
+                </div>
+                <div class="cardinfoGmail">
+                    <h4>Gmail: {{ MiUsuario.mail }}</h4>
+                </div>
+                <div class="cardinfoName">
+                    <div class="cardinfoNameUser">
+                        <h4>Torneos Participados:
+                            {{ eventosParticipados.length > 0 ? eventosParticipados.length : 'No has participado en ningún torneo aún' }}
+                        </h4>
+                    </div>
+                    <div class="cardinfoNameYear">
+                        <h4>Torneos Ganados:
+                            {{ eventosGanados.length > 0 ? eventosGanados.length : 'No has ganado ningún torneo aún' }}
+                        </h4>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+    <!-- <div v-if="eventosParticipados.length > 0" class="tablaEventos">
+        <h3>Eventos en los que has participado</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Evento</th>
+                    <th>Fecha</th>
+                    <th>Posición</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="evento in eventosParticipados" :key="evento.id_evento">
+                    <td>{{ evento.nombre }}</td>
+                    <td>{{ evento.fecha_inicio }}</td>
+                    <td>{{ evento.pivot.posicion }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div v-if="eventosGanados.length > 0" class="tablaEventos">
+            <h3>Eventos que ganaste</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Evento</th>
+                        <th>Fecha</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="evento in eventosGanados" :key="evento.id_evento">
+                        <td>{{ evento.nombre }}</td>
+                        <td>{{ evento.fecha_inicio }}</td>
+                    </tr>
+                </tbody>
+            </table>
+    </div> -->
 
     <!-- Modal -->
     <div class="modal" v-if="mostrarModal">
@@ -82,7 +139,9 @@ export default {
             MiUsuario: {},
             mostrarModal: false,
             modalType: null,
-            MiUsuarioEditado: {}
+            MiUsuarioEditado: {},
+            eventosParticipados: [], // Para los eventos en los que el usuario ha participado
+            eventosGanados: [] // Para los eventos que el usuario ha ganado
         };
     },
     mounted() {
@@ -100,7 +159,11 @@ export default {
                     console.log("ID de usuario enviado:", this.userId);
                     console.log("Datos del usuario:", response.data);
                     if (response.data.length > 0) {
-                        this.MiUsuario = response.data[0]; // Asigna el primer usuario de la colección
+                        this.MiUsuario = response.data[0];
+                        this.eventosParticipados = this.MiUsuario.eventos
+                        this.eventosGanados = this.eventosParticipados.filter(
+                            (evento) => evento.pivot.posicion === 1
+                        );
                     } else {
                         console.error("No se encontró el usuario");
                     }
@@ -146,6 +209,7 @@ export default {
     min-width: 400px;
     max-width: 1100px;
     width: 80%;
+    height: auto;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -163,8 +227,9 @@ export default {
 .cardcontainer {
     width: 100%;
     height: 500px;
-    background-color: #C9FFFF;
     display: flex;
+    border: solid 2px #C6FF41;
+    color: white;
 }
 
 .cardIcon {
@@ -177,9 +242,8 @@ export default {
 .cardUser {
     width: 30%;
     height: 100%;
-    border: solid 1px black;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
     flex-direction: column;
     text-align: center;
@@ -189,10 +253,58 @@ export default {
     width: 70%;
     height: 100%;
     display: flex;
-    justify-content: center;
-    align-content: center;
+    align-items: center;
     flex-direction: column;
-    border: solid 1px rgb(255, 0, 0);
+    text-align: center;
+}
+
+.cardinfoName {
+    width: 100%;
+    height: 20%;
+    display: flex;
+}
+
+.cardinfoNameUser,
+.cardinfoNameYear {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cardinfoGmail {
+    width: 100%;
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.cardinfo,
+.cardinfoName,
+.cardinfoNameUser,
+.cardinfoNameYear,
+.cardinfoGmail {
+    position: relative;
+    /* Necesario para el pseudo-elemento */
+}
+
+.cardinfo::after,
+.cardinfoName::after,
+.cardinfoNameUser::after,
+.cardinfoNameYear::after,
+.cardinfoGmail::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 10%;
+    /* Inicia el borde desde el 10% del ancho */
+    width: 80%;
+    /* Toma el 80% del ancho del contenedor */
+    border-bottom: 1px solid #C6FF41;
+    /* Color del borde */
 }
 
 .headerpart1 {
@@ -203,13 +315,15 @@ export default {
     align-items: center;
     flex-direction: row;
 }
+
 .modal {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.6); /* fondo oscurecido */
+    background-color: rgba(0, 0, 0, 0.6);
+    /* fondo oscurecido */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -227,14 +341,13 @@ export default {
 }
 
 .modal-header {
-    background-color: #f4f4f4;
+    background-color: #FFFCA8;
     padding: 16px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     font-weight: bold;
     font-size: 18px;
-    border-bottom: 1px solid #ddd;
 }
 
 .modal-body {
@@ -248,8 +361,7 @@ export default {
     display: flex;
     justify-content: flex-end;
     gap: 10px;
-    background-color: #f9f9f9;
-    border-top: 1px solid #ddd;
+    background-color: #FFFCA8;
 }
 
 .modal-footer .btn {
@@ -266,7 +378,6 @@ input {
     padding: 8px 12px;
     margin-bottom: 12px;
     border-radius: 6px;
-    border: 1px solid #ccc;
     font-size: 14px;
 }
 
@@ -283,6 +394,7 @@ input {
         transform: scale(0.9);
         opacity: 0;
     }
+
     to {
         transform: scale(1);
         opacity: 1;
@@ -296,6 +408,62 @@ input {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: aqua;
+    border-radius: 25px;
+    color: black;
+}
+
+.Editar {
+    background-color: #C9FFFF;
+}
+
+.Eliminar {
+    background-color: red;
+}
+
+@media (max-width: 1050px) {
+    .cardinfoName {
+        width: 80%;
+        flex-direction: column;
+        height: 250px;
+    }
+
+    .cardinfoNameUser,
+    .cardinfoNameYear {
+        width: 100%;
+        height: 150px;
+        text-align: center;
+    }
+    .cardinfoGmail{
+        height: 100px;
+    }
+
+    .cardheader {
+        justify-content: center;
+    }
+
+    .headerpart1 {
+        width: 100%;
+    }
+
+    .Editar,
+    .Eliminar {
+        width: 30%;
+    }
+
+    .cardcontainer {
+        flex-direction: column;
+        height: auto;
+        /* Permite que crezca con el contenido */
+        min-height: 200px;
+        /* Asegura un tamaño mínimo */
+    }
+
+    .cardUser,
+    .cardinfo {
+        width: 100%;
+        height: auto;
+        margin-top: 7.5px;
+        margin-bottom: 7.5px;
+    }
 }
 </style>

@@ -23,7 +23,8 @@ class UsuarioController extends Controller
             $query->where('id_usuario', $request->id_usuario);
         }
 
-        $usuarios = $query->with('rol')->get();
+        // Obtener los usuarios con sus roles y eventos relacionados
+        $usuarios = $query->with('rol', 'eventos')->get();
 
         return UsuarioResource::collection($usuarios);
     }

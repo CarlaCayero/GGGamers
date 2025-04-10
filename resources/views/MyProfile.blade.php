@@ -14,7 +14,6 @@
 @section('ContenidoDelMainMaldicion')
 <div id="app" class="containerPerfil">
     <perfil :user-id='@json(Auth::user()->id_usuario)'></perfil>
-
 </div>
 @endsection
 
