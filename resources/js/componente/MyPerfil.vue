@@ -33,58 +33,40 @@
                 </div>
                 <div class="cardinfoName">
                     <div class="cardinfoNameUser">
-                        <h4>Torneos Participados:
-                            {{ eventosParticipados.length > 0 ? eventosParticipados.length : 'No has participado en ningún torneo aún' }}
+                        <h4 v-if="NoParticipadosEventos == false">
+                            Torneos Participados: {{ eventosParticipados.length }}
+                        </h4>
+                        <h4 v-else>
+                            No has Participado aun
                         </h4>
                     </div>
                     <div class="cardinfoNameYear">
-                        <h4>Torneos Ganados:
-                            {{ eventosGanados.length > 0 ? eventosGanados.length : 'No has ganado ningún torneo aún' }}
+                        <h4 v-if="NoTorneosGanados == false">
+                            Torneos Ganados: {{ eventosGanados.length }}
+                        </h4>
+                        <h4 v-else>
+                            No has ganado aun
                         </h4>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- <div v-if="eventosParticipados.length > 0" class="tablaEventos">
-        <h3>Eventos en los que has participado</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th>Evento</th>
-                    <th>Fecha</th>
-                    <th>Posición</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr v-for="evento in eventosParticipados" :key="evento.id_evento">
-                    <td>{{ evento.nombre }}</td>
-                    <td>{{ evento.fecha_inicio }}</td>
-                    <td>{{ evento.pivot.posicion }}</td>
-                </tr>
-            </tbody>
-        </table>
+    <h1>Estadistica</h1>
+    <div class="tablaEstadistica">
+        <div class="tablaEstadisticaParticipados">
+            <canvas v-if="NoParticipadosEventos == false" id="graficoParticipados"></canvas>
+            <div v-else>
+                <p>no has participados aun</p>
+            </div>
+        </div>
+        <div class="tablaEstadisticaGanados">
+            <canvas v-if="NoTorneosGanados == false" id="graficoGanados"></canvas>
+            <div v-else>
+                <p>no has Ganado aun</p>
+            </div>
+        </div>
     </div>
-
-    <div v-if="eventosGanados.length > 0" class="tablaEventos">
-            <h3>Eventos que ganaste</h3>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Evento</th>
-                        <th>Fecha</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr v-for="evento in eventosGanados" :key="evento.id_evento">
-                        <td>{{ evento.nombre }}</td>
-                        <td>{{ evento.fecha_inicio }}</td>
-                    </tr>
-                </tbody>
-            </table>
-    </div> -->
-
-    <!-- Modal -->
     <div class="modal" v-if="mostrarModal">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -125,6 +107,9 @@
 
 <script>
 
+import { Chart, registerables } from 'chart.js';
+Chart.register(...registerables);
+
 export default {
     inheritAttrs: false,
     props: {
@@ -141,7 +126,9 @@ export default {
             modalType: null,
             MiUsuarioEditado: {},
             eventosParticipados: [], // Para los eventos en los que el usuario ha participado
-            eventosGanados: [] // Para los eventos que el usuario ha ganado
+            eventosGanados: [], // Para los eventos que el usuario ha ganado
+            NoParticipadosEventos: false,
+            NoTorneosGanados: false
         };
     },
     mounted() {
@@ -164,6 +151,16 @@ export default {
                         this.eventosGanados = this.eventosParticipados.filter(
                             (evento) => evento.pivot.posicion === 1
                         );
+                        if (this.eventosParticipados.length != 0) {
+                            this.renderGrafico(this.eventosParticipados);
+                        } else {
+                            this.NoParticipadosEventos = true;
+                        }
+                        if (this.eventosGanados.length != 0) {
+                            this.renderGrafico(this.eventosGanados);
+                        } else {
+                            this.NoTorneosGanados = true;
+                        }
                     } else {
                         console.error("No se encontró el usuario");
                     }
@@ -200,11 +197,67 @@ export default {
             console.log("Eliminando usuario:", this.MiUsuario.id);
             this.cerrarModal();
         },
+        renderGrafico(eventos) {
+            const conteoJuegos = {};
+
+            eventos.forEach(evento => {
+                const nombreJuego = evento.juego?.nombre || 'Juego desconocido';
+                if (conteoJuegos[nombreJuego]) {
+                    conteoJuegos[nombreJuego]++;
+                } else {
+                    conteoJuegos[nombreJuego] = 1;
+                }
+            });
+
+            const labels = Object.keys(conteoJuegos);
+            const data = Object.values(conteoJuegos);
+
+            const colores = [
+                '#C6FF41', '#36A2EB', '#FFCE56', '#4BC0C0',
+                '#9966FF', '#FF9F40', '#C9CBCF', '#8AE234',
+                '#F03464', '#B94FC8'
+            ];
+
+            const ctx = eventos === this.eventosParticipados ? document.getElementById('graficoParticipados') : document.getElementById('graficoGanados');
+            if (ctx) {
+                new Chart(ctx, {
+                    type: 'pie',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            data: data,
+                            backgroundColor: colores.slice(0, labels.length),
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                position: 'bottom',
+                                labels: {
+                                    color: 'white',
+                                    font: {
+                                        size: 14,
+                                        family: "'Exo 2', sans-serif"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+        }
+
+
+
     },
 
 };
 </script>
 <style scoped>
+h1{
+    color: white;
+}
 .cardContainer {
     min-width: 400px;
     max-width: 1100px;
@@ -420,7 +473,39 @@ input {
     background-color: red;
 }
 
+.tablaEstadistica {
+    display: flex;
+    width: 80%;
+    height: auto;
+    min-height: 200px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    border: solid 1px pink;
+    padding: 5px;
+}
+
+.tablaEstadisticaParticipados,
+.tablaEstadisticaGanados {
+    width: 45%;
+    height: 400px;
+    display: flex;
+    border: solid 1px #C6FF41;
+    color: white;
+    justify-content: center;
+    align-items: center;
+}
+
 @media (max-width: 1050px) {
+    .tablaEstadistica {
+        flex-direction: column;
+    }
+
+    .tablaEstadisticaParticipados,
+    .tablaEstadisticaGanados {
+        width: 95%;
+    }
+
     .cardinfoName {
         width: 80%;
         flex-direction: column;
@@ -433,7 +518,8 @@ input {
         height: 150px;
         text-align: center;
     }
-    .cardinfoGmail{
+
+    .cardinfoGmail {
         height: 100px;
     }
 
