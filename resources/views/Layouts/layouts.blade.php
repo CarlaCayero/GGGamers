@@ -86,9 +86,15 @@
             </div>
             <div class="MyFooterDiv">
                 Síguenos en:
-                <img src="{{ asset('image/logo/facebook.png') }}" alt="my logo">
-                <img src="{{ asset('image/logo/instagram.png') }}" alt="my logo">
-                <img src="{{ asset('image/logo/twitter.png') }}" alt="my logo">
+                <a href="https://www.facebook.com/profile.php?id=61574844856450" target="_blank">
+                    <img src="{{ asset('image/logo/facebook.png') }}" alt="my logo">
+                </a>
+                <a href="https://x.com/GGGamers178098"  target="_blank">
+                    <img src="{{ asset('image/logo/twitter.png') }}" alt="my logo">
+                </a>
+                <a href="https://www.instagram.com/gggamersoficial/" target="_blank">
+                    <img src="{{ asset('image/logo/instagram.png') }}" alt="my logo">
+                </a>
                 <img src="{{ asset('image/logo/discord.png') }}" alt="my logo">
             </div>
         </div>

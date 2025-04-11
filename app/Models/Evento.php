@@ -29,10 +29,7 @@ class Evento extends Model
             ->withPivot('posicion');  // Incluye la columna 'posicion' en la tabla pivot
     }
 
-    /**
-     * Relación con Juego
-     */
-    public function juegos()
+    public function juego()
     {
         return $this->belongsTo(Juego::class, 'juegos_id_juego');
     }
