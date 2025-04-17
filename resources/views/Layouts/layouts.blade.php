@@ -16,14 +16,14 @@
 
     <nav class="Mynavbar">
         @if (!Auth::check())
-            <a href="{{ url('/login') }}" class="PreNavBar" >
-                <div class="IniciarSesion" tabindex="1">
+            <a href="{{ url('/login') }}" class="PreNavBar" tabindex="1" >
+                <div class="IniciarSesion">
                     Iniciar Sesion
                 </div>
             </a>
-            <img src="{{ asset('image/logo/logo.png') }}" alt="my logo" >
-            <a href="{{ url('/register') }}" class="PreNavBar">
-                <div class="Registrarse" tabindex="2">
+            <img src="{{ asset('image/logo/logo.png') }}" alt="my logo"  >
+            <a href="{{ url('/register') }}" class="PreNavBar" tabindex="2">
+                <div class="Registrarse">
                     Registrarse
                 </div>
             </a>

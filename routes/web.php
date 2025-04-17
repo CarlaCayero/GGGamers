@@ -2,6 +2,7 @@
 
 use App\Models\Juego;
 use App\Models\Evento;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\Api\JuegoController;
@@ -19,7 +20,7 @@ use App\Http\Controllers\Api\JuegoController;
 
 Route::get('/', function () {
     return view('home');
-});
+})->name('VolverHome');
 Route::get('/torneos', function () {
     return view('torneos');
 });
@@ -49,6 +50,15 @@ Route::get('/torneos', function() {
 Route::get('/sobre-nosotros', function() {
     return view('sobreNosotros');
 });
+
+Route::get('/redireccionar', function () {
+    // Verificar si el usuario está autenticado
+    if (Auth::check()) {
+        return redirect('/torneos');
+    } else {
+        return redirect('/login');
+    }
+})->name('redireccionar');
 
 
 

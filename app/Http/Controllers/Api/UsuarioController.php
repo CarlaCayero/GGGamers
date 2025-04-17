@@ -3,10 +3,11 @@
 namespace App\Http\Controllers\Api;
 
 use App\Models\Usuario;
+use App\Clases\Utilidad;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Resources\UsuarioResource;
-use App\Clases\Utilidad;
 use Illuminate\Database\QueryException;
 
 class UsuarioController extends Controller
@@ -86,18 +87,23 @@ class UsuarioController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Usuario $usuario)
+    public function destroy(Usuario $usuario, Request $request)
     {
-        try{
+        try {
             $usuario->delete();
-            $response = \response()->json(['misatge' => 'Registro esborrat correctamente'], 200);
-        }
-        catch (QueryException $ex) {
 
+            // Si el usuario que se está eliminando es el mismo que está autenticado
+            if (Auth::id() === $usuario->id_usuario) {
+                Auth::logout();
+                $request->session()->invalidate();
+                $request->session()->regenerateToken();
+            }
+
+            return response()->json(['mensaje' => 'Usuario eliminado y sesión cerrada'], 200);
+        } catch (QueryException $ex) {
             $mensaje = Utilidad::errorMensaje($ex);
-            $response = \response()->json(["error" => $mensaje],400);
+            return response()->json(["error" => $mensaje], 400);
         }
-
-        return $response;
     }
+
 }

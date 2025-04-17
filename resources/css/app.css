@@ -3,7 +3,9 @@
     padding: 0;
     box-sizing: border-box;
 }
-
+button{
+    border: none;
+}
 .Mynavbar {
     position: fixed;
     top: 0;
@@ -28,6 +30,16 @@
     height: 60%;
     text-decoration: none;
     color: black;
+}
+.PreNavBar:focus-within .IniciarSesion,
+.PreNavBar:focus-within .Registrarse {
+    box-shadow: 0 0 15px 5px #C9FFFF;
+}
+
+.PreNavBar:focus-within .IniciarSesion::after,
+.PreNavBar:focus-within .Registrarse::after {
+    width: 100%;
+    left: 0;
 }
 .PostAuthNavbar{
     display: flex;
@@ -336,26 +348,6 @@
     background-color: #23023b;
     transition: width 0.3s ease-in-out, left 0.3s ease-in-out;
 }
-
-.BotonesDeLasOpciones .Myboton:hover,
-.BotonesDeLasOpciones .Myboton:focus,
-.IniciarSesion:hover,
-.IniciarSesion:focus,
-.Registrarse:hover,
-.Registrarse:focus {
-    box-shadow: 0 0 15px 5px #C9FFFF;
-}
-
-.BotonesDeLasOpciones .Myboton:hover::after,
-.BotonesDeLasOpciones .Myboton:focus::after,
-.IniciarSesion:hover::after,
-.IniciarSesion:focus::after,
-.Registrarse:hover::after,
-.Registrarse:focus::after {
-    width: 100%;
-    left: 0;
-}
-
 .containerPerfil{
     display: flex;
     width: 100%;

@@ -46,6 +46,7 @@
     const baseURL = window.location.origin + "/GGGamers/public";
     window.location.href = `${baseURL}/eventos/${this.juegoID}`;
   }
+
 }
   }
   </script>
