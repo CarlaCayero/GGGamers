@@ -1,6 +1,6 @@
 <template>
     <main>
-        <section class="ends">Parallax with wiping titles</section>
+        <section class="ends">DESCUBRE QUE JUEGOS PERTENECES</section>
         <section class="slides">
             <ul class="list">
                 <li class="slide">
@@ -11,7 +11,7 @@
                         "
                     ></div>
                     <div class="content">ENTRA AL COMBATE, DEMUESTRA TU PODER
-                        <p>hola</p>
+
                     </div>
                     <div class="overlay"></div>
                 </li>
@@ -69,7 +69,7 @@
                 </li>
             </ul>
         </section>
-        <section class="ends">So fun, right?</section>
+        <section class="ends">JUEGA AHORA Y PONTE EN LA CIMA</section>
     </main>
 </template>
 

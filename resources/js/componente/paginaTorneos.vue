@@ -100,13 +100,11 @@ export default {
     align-items: center;
     width: 40%;
     height: auto;
-    border: solid 1px red;
 }
 
 .FiltroJuego {
     width: 60%;
     height: auto;
-    border: solid 1px green;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -117,7 +115,6 @@ export default {
     width: 90%;
     display: flex;
     height: auto;
-    border: solid 1px yellow;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;

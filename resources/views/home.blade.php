@@ -109,5 +109,13 @@
                 disableOnInteraction: false,
             },
         });
+
+        const swiperSlides = document.querySelectorAll('.swiper-slide');
+
+swiperSlides.forEach(slide => {
+    slide.addEventListener('click', function() {
+        window.location.href = '{{ route('redireccionar') }}';
+    });
+});
     });
 </script>

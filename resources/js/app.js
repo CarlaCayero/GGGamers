@@ -19,3 +19,4 @@ app.component('perfil', MyPerfil);
 app.component('evento', eventos)
 
 app.mount('#app');
+

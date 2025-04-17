@@ -55,16 +55,39 @@
     <h1>Estadistica</h1>
     <div class="tablaEstadistica">
         <div class="tablaEstadisticaParticipados">
+            <h1>Torneos Participado</h1>
             <canvas v-if="NoParticipadosEventos == false" id="graficoParticipados"></canvas>
             <div v-else>
                 <p>no has participados aun</p>
             </div>
         </div>
         <div class="tablaEstadisticaGanados">
+            <h1>Torneos Ganados</h1>
             <canvas v-if="NoTorneosGanados == false" id="graficoGanados"></canvas>
             <div v-else>
                 <p>no has Ganado aun</p>
             </div>
+        </div>
+    </div>
+    <div class="ResultadosFinal">
+        <div class="ResultadoFinalTexto">
+            <h1>Tus resultados</h1>
+            <p>
+                Has participado en batallas, torneos, y desafíos... algunos ganados, otros solo vividos.
+                Tu rendimiento ha sido evaluado, y con base en tus victorias y participaciones, hemos calculado tu
+                probabilidad de ser el próximo campeón supremo.
+                ¿Curioso por saber tu destino?
+                <strong>Abre el libro y descubre tu recompensa.</strong>
+            </p>
+
+            <!-- Botón para abrir el modal explicativo -->
+            <button class="btn btn-info mt-3" @click="abrirModal('explicacion')">
+                ¿Qué significa cada imagen?
+            </button>
+        </div>
+
+        <div class="ResultadoFinalLibro">
+            <card-resultado :probabilidad="probabilidadGanar"></card-resultado>
         </div>
     </div>
     <div class="modal" v-if="mostrarModal">
@@ -72,13 +95,16 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">
-                        {{ modalType === 'editar' ? 'Editar Usuario' : 'Eliminar Usuario' }}
+                        {{ modalType === 'editar' ? 'Editar Usuario' : modalType === 'eliminar' ? 'Eliminar Usuario' :
+                        'Significado de las imágenes' }}
                     </h5>
                     <button type="button" class="close" @click="cerrarModal">
                         <span>&times;</span>
                     </button>
                 </div>
+
                 <div class="modal-body">
+                    <!-- Editar -->
                     <div v-if="modalType === 'editar'">
                         <label>Nombre:</label>
                         <input v-model="MiUsuarioEditado.nombre" type="text" />
@@ -87,10 +113,49 @@
                         <label>Edad:</label>
                         <input v-model="MiUsuarioEditado.edad" type="number" />
                     </div>
+
+                    <!-- Eliminar -->
                     <div v-else-if="modalType === 'eliminar'">
-                        <p>¿Estás seguro de que deseas eliminar al usuario <strong>{{ MiUsuario.nombre }}</strong>?</p>
+                        ¿Estás seguro de que deseas eliminar al usuario
+                        <strong>{{ MiUsuario.nombre }}</strong>?
+                    </div>
+
+                    <!-- Explicación de imágenes -->
+                    <div v-else-if="modalType === 'explicacion'">
+                        <ul>
+                            <li>
+                                <img :src="Imagen1" />
+                                Tus posibilidades son escasas... pero incluso un 1% es suficiente para cambiar el
+                                destino.
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <img :src="Imagen2" />
+                                No será fácil, pero si sigues luchando, podrías dar la sorpresa que nadie espera.
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <img :src="Imagen3" />
+                                Tienes una oportunidad real. No subestimes lo que eres capaz de lograr.
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <img :src="Imagen4" />
+                                Estás en la cima de tu forma. ¡Tu victoria está al alcance de la mano!
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <img :src="Imagen5" />
+                                ¡Es prácticamente tuyo! El título de campeón te espera. Solo falta que lo reclames.
+                            </li>
+                        </ul>
                     </div>
                 </div>
+
                 <div class="modal-footer">
                     <button v-if="modalType === 'editar'" class="btn btn-primary" @click="guardarCambios">
                         Guardar cambios
@@ -109,9 +174,13 @@
 
 import { Chart, registerables } from 'chart.js';
 Chart.register(...registerables);
+import CardResultado from "./cartaResultado.vue";
 
 export default {
     inheritAttrs: false,
+    components: {
+        CardResultado
+    },
     props: {
         userId: {
             type: Number,
@@ -128,7 +197,14 @@ export default {
             eventosParticipados: [], // Para los eventos en los que el usuario ha participado
             eventosGanados: [], // Para los eventos que el usuario ha ganado
             NoParticipadosEventos: false,
-            NoTorneosGanados: false
+            NoTorneosGanados: false,
+            probabilidadGanar: 0, // Probabilidad de ganar, lo calcularemos
+            Imagen1: '../image/ImageResult/catxd.png',
+            Imagen2: '../image/ImageResult/catsad.png',
+            Imagen3: '../image/ImageResult/catstanding.png',
+            Imagen4: '../image/ImageResult/catcat.png',
+            Imagen5: '../image/ImageResult/kirbo.jpg',
+
         };
     },
     mounted() {
@@ -153,6 +229,7 @@ export default {
                         );
                         if (this.eventosParticipados.length != 0) {
                             this.renderGrafico(this.eventosParticipados);
+                            this.calcularProbabilidad();
                         } else {
                             this.NoParticipadosEventos = true;
                         }
@@ -194,9 +271,27 @@ export default {
                 });
         },
         eliminarUsuario() {
-            console.log("Eliminando usuario:", this.MiUsuario.id);
-            this.cerrarModal();
+            console.log("Eliminando usuario:", this.MiUsuario.id_usuario);
+            axios.delete(`usuarios/${this.MiUsuario.id_usuario}`)
+                .then(() => {
+                    this.cerrarModal();
+                    window.location.href = '/GGGamers/public/';
+
+                })
+                .catch((error) => {
+                    console.error("Error al eliminar:", error);
+                });
         },
+        calcularProbabilidad() {
+            const totalEventos = this.eventosParticipados.length;
+            const totalGanados = this.eventosGanados.length;
+
+            if (totalEventos > 0) {
+                this.probabilidadGanar = ((totalGanados / totalEventos) * 100).toFixed(2);
+            }
+        },
+
+
         renderGrafico(eventos) {
             const conteoJuegos = {};
 
@@ -233,7 +328,7 @@ export default {
                         responsive: true,
                         plugins: {
                             legend: {
-                                position: 'bottom',
+                                position: 'top',
                                 labels: {
                                     color: 'white',
                                     font: {
@@ -247,17 +342,24 @@ export default {
                 });
             }
         }
-
-
-
     },
 
 };
 </script>
 <style scoped>
-h1{
+h1 {
     color: white;
 }
+
+p {
+    color: white;
+}
+
+.modal-body img {
+    width: 60px;
+    height: 60px;
+}
+
 .cardContainer {
     min-width: 400px;
     max-width: 1100px;
@@ -380,14 +482,14 @@ h1{
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 999;
+    z-index: 20000;
 }
 
 .modal-dialog {
     background-color: #ffffff;
     border-radius: 16px;
     width: 90%;
-    max-width: 500px;
+    max-width: 800px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
     overflow: hidden;
     animation: fadeIn 0.3s ease-out;
@@ -481,19 +583,57 @@ input {
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
-    border: solid 1px pink;
     padding: 5px;
+    margin-top: 20px;
+    margin-bottom: 30px;
 }
 
 .tablaEstadisticaParticipados,
 .tablaEstadisticaGanados {
     width: 45%;
-    height: 400px;
+    height: auto;
     display: flex;
-    border: solid 1px #C6FF41;
     color: white;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+    margin-top: 30px;
+}
+
+.ResultadosFinal {
+    display: flex;
+    width: 80%;
+    height: auto;
+    min-height: 200px;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+    border: solid black 1px;
+    margin: 20px;
+}
+
+.ResultadoFinalTexto {
+    display: flex;
+    width: 30%;
+    height: 500px;
+    border: solid blue 1px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    padding-left: 10px;
+    padding-right: 10px;
+    letter-spacing: 2.5px;
+}
+
+.ResultadoFinalLibro {
+    display: flex;
+    width: 60%;
+    height: 500px;
+    border: solid red 1px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 25px;
 }
 
 @media (max-width: 1050px) {
@@ -551,5 +691,20 @@ input {
         margin-top: 7.5px;
         margin-bottom: 7.5px;
     }
+
+    .ResultadosFinal {
+        flex-direction: column;
+    }
+
+    .ResultadoFinalTexto,
+    .ResultadoFinalLibro {
+        width: 100%;
+    }
+
+    .ResultadoFinalTexto {
+        height: auto;
+        padding: 10px;
+    }
+
 }
 </style>
