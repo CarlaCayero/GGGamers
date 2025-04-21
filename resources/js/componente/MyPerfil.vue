@@ -94,10 +94,10 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">
+                    <h1 class="modal-title">
                         {{ modalType === 'editar' ? 'Editar Usuario' : modalType === 'eliminar' ? 'Eliminar Usuario' :
                         'Significado de las imágenes' }}
-                    </h5>
+                    </h1>
                     <button type="button" class="close" @click="cerrarModal">
                         <span>&times;</span>
                     </button>
@@ -157,7 +157,7 @@
                 </div>
 
                 <div class="modal-footer">
-                    <button v-if="modalType === 'editar'" class="btn btn-primary" @click="guardarCambios">
+                    <button v-if="modalType === 'editar'" class="btn btn-info" @click="guardarCambios">
                         Guardar cambios
                     </button>
                     <button v-else-if="modalType === 'eliminar'" class="btn btn-danger" @click="eliminarUsuario">
@@ -486,7 +486,6 @@ p {
 }
 
 .modal-dialog {
-    background-color: #ffffff;
     border-radius: 16px;
     width: 90%;
     max-width: 800px;
@@ -496,8 +495,7 @@ p {
 }
 
 .modal-header {
-    background-color: #FFFCA8;
-    padding: 16px 20px;
+    background-color: #23023B;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -512,11 +510,10 @@ p {
 }
 
 .modal-footer {
-    padding: 16px 20px;
     display: flex;
     justify-content: flex-end;
     gap: 10px;
-    background-color: #FFFCA8;
+    background-color: #23023B;
 }
 
 .modal-footer .btn {
@@ -614,9 +611,8 @@ input {
 
 .ResultadoFinalTexto {
     display: flex;
-    width: 30%;
+    width: 50%;
     height: 500px;
-    border: solid blue 1px;
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -628,9 +624,8 @@ input {
 
 .ResultadoFinalLibro {
     display: flex;
-    width: 60%;
+    width: 40%;
     height: 500px;
-    border: solid red 1px;
     justify-content: center;
     align-items: center;
     border-radius: 25px;
