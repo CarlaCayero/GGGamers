@@ -113,16 +113,22 @@ export default {
     width: 100vw;
 }
 
+.container {
+    display: grid; /* Cambia a un diseño de cuadrícula */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Máximo 3 columnas */
+    gap: 20px; /* Espaciado entre tarjetas */
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
 .card {
     background-color: #23023b;
     color: white;
     padding: 20px;
     border-radius: 10px;
-    margin: 10px;
     border: #c6ff41 3px solid;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-    width: 300px;
-    /* Tamaño fijo para las tarjetas */
     text-align: center;
 }
 
