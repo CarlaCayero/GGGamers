@@ -38,6 +38,11 @@ Route::get('/profile/{id_usuario}', function($id_usuario) {
     return view('MyProfile', compact('user'));
 })->name('Profile');
 
+Route::get('/AdminHUD/{id_usuario}', function($id_usuario) {
+    $user = App\Models\Usuario::where('id_usuario', $id_usuario)->first();
+    return view('MyAdministrador', compact('user'));
+})->name('Administrador');
+
 Route::get('/eventos/{id_juego}', function($id_juego) {
     $juego = Juego::where('id_juego', $id_juego)->first();
     $eventos = Evento::where('juegos_id_juego', $id_juego)->get();

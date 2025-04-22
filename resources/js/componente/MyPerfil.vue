@@ -1,24 +1,9 @@
 <template>
     <div class="cardContainer">
         <div class="cardheader">
-            <div class="headerpart1">
-                <div class="Editar" @click="abrirModal('editar')">Editar</div>
-                <div class="Eliminar" @click="abrirModal('eliminar')">Eliminar</div>
-            </div>
         </div>
 
         <div class="cardcontainer">
-            <div class="cardUser">
-                <div class="cardIcon"></div>
-                <div class="userDetails">
-                    <!-- <p>
-                        <strong>Rol:</strong>
-                        {{
-                            MiUsuario.rol ? MiUsuario.rol.nombre : "No asignado"
-                        }}
-                    </p> -->
-                </div>
-            </div>
             <div class="cardinfo">
                 <div class="cardinfoName">
                     <div class="cardinfoNameUser">
@@ -49,7 +34,13 @@
                         </h4>
                     </div>
                 </div>
+
+                <div class="cardButton">
+                    <div class="Editar" @click="abrirModal('editar')">Editar</div>
+                    <div class="Eliminar" @click="abrirModal('eliminar')">Eliminar</div>
+                </div>
             </div>
+
         </div>
     </div>
     <h1>Estadistica</h1>
@@ -79,8 +70,6 @@
                 ¿Curioso por saber tu destino?
                 <strong>Abre el libro y descubre tu recompensa.</strong>
             </p>
-
-            <!-- Botón para abrir el modal explicativo -->
             <button class="btn btn-info mt-3" @click="abrirModal('explicacion')">
                 ¿Qué significa cada imagen?
             </button>
@@ -381,10 +370,13 @@ p {
 
 .cardcontainer {
     width: 100%;
-    height: 500px;
+    height: 450px;
     display: flex;
     border: solid 2px #C6FF41;
     color: white;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
 }
 
 .cardIcon {
@@ -394,23 +386,24 @@ p {
     background-color: #C6FF41;
 }
 
-.cardUser {
-    width: 30%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    text-align: center;
-}
 
 .cardinfo {
-    width: 70%;
+    width: 90%;
     height: 100%;
     display: flex;
     align-items: center;
     flex-direction: column;
     text-align: center;
+    margin: 5px;
+}
+.cardButton{
+    display: flex;
+    width: 90%;
+    height: 100px;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+    margin-top: 20px;
 }
 
 .cardinfoName {
@@ -446,7 +439,6 @@ p {
     /* Necesario para el pseudo-elemento */
 }
 
-.cardinfo::after,
 .cardinfoName::after,
 .cardinfoNameUser::after,
 .cardinfoNameYear::after,
@@ -555,12 +547,12 @@ input {
 
 .Editar,
 .Eliminar {
-    width: 200px;
-    height: 50%;
+    width: 350px;
+    height: 70%;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 25px;
+    border-radius: 10px;
     color: black;
 }
 
@@ -668,7 +660,8 @@ input {
 
     .Editar,
     .Eliminar {
-        width: 30%;
+        width: 80%;
+        height: 40%;
     }
 
     .cardcontainer {
@@ -700,6 +693,13 @@ input {
         height: auto;
         padding: 10px;
     }
+
+    .cardButton{
+        width: 100%;
+        height: 300px;
+        flex-direction: column;
+        justify-content: space-around;
+}
 
 }
 </style>
