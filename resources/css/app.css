@@ -31,16 +31,32 @@ button{
     text-decoration: none;
     color: black;
 }
+/* Efecto con focus-within */
 .PreNavBar:focus-within .IniciarSesion,
-.PreNavBar:focus-within .Registrarse {
+.PreNavBar:focus-within .Registrarse,
+.PreNavBar:hover .IniciarSesion,
+.PreNavBar:hover .Registrarse {
     box-shadow: 0 0 15px 5px #C9FFFF;
 }
 
 .PreNavBar:focus-within .IniciarSesion::after,
-.PreNavBar:focus-within .Registrarse::after {
+.PreNavBar:focus-within .Registrarse::after,
+.PreNavBar:hover .IniciarSesion::after,
+.PreNavBar:hover .Registrarse::after {
     width: 100%;
     left: 0;
 }
+.PostNavBar:hover .Myboton,
+.PostNavBar:focus-within .Myboton {
+    box-shadow: 0 0 15px 5px #C9FFFF;
+}
+
+.PostNavBar:hover .Myboton::after,
+.PostNavBar:focus-within .Myboton::after {
+    width: 100%;
+    left: 0;
+}
+
 .PostAuthNavbar{
     display: flex;
     width: 200px;
