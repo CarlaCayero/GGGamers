@@ -82,6 +82,9 @@
     height: 800px;
     width: 100%;
     right: 10px;
+    display: flex; /* Asegura que el contenido interno esté alineado */
+    justify-content: center; /* Centra el contenido interno horizontalmente */
+    align-items: center;
 }
 
 @media (max-width: 1500px){
