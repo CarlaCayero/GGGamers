@@ -9,9 +9,6 @@
                     <p class="card-text">{{ evento.descripcion }}</p>
                     <p class="card-text">{{ getEspacioNombre(evento.espacios_id_espacio) }}</p>
                     <button @click="generarQR(evento)" class="btn btn-primary w-100">Participar</button>
-                    <div v-if="evento.id_evento === qrEventoId" class="text-center mt-3">
-                        <img :src="qrCode" alt="Código QR" class="img-fluid" />
-                    </div>
                 </div>
             </div>
         </div>

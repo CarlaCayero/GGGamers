@@ -52,17 +52,17 @@
             </div>
         </div>
     </div>
-    <h1>Estadistica</h1>
+    <h1>Estadísticas</h1>
     <div class="tablaEstadistica">
         <div class="tablaEstadisticaParticipados">
-            <h1>Torneos Participado</h1>
+            <h1>Has participado en: </h1>
             <canvas v-if="NoParticipadosEventos == false" id="graficoParticipados"></canvas>
             <div v-else>
                 <p>no has participados aun</p>
             </div>
         </div>
         <div class="tablaEstadisticaGanados">
-            <h1>Torneos Ganados</h1>
+            <h1>Has ganado: </h1>
             <canvas v-if="NoTorneosGanados == false" id="graficoGanados"></canvas>
             <div v-else>
                 <p>no has Ganado aun</p>
