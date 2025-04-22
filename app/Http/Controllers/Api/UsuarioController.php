@@ -19,12 +19,10 @@ class UsuarioController extends Controller
     {
         $query = Usuario::query();
 
-        // Corregir la comprobación del parámetro y usar 'id_usuario' en lugar de 'usuarios'
         if ($request->has('id_usuario') && $request->id_usuario != '') {
             $query->where('id_usuario', $request->id_usuario);
         }
 
-        // Obtener los usuarios con sus roles y eventos relacionados
         $usuarios = $query->with('rol', 'eventos.juego')->get();
 
         return UsuarioResource::collection($usuarios);
