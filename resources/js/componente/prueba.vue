@@ -1,6 +1,6 @@
 <template>
     <main>
-        <section class="ends">DESCUBRE QUE JUEGOS PERTENECES</section>
+        <section class="ends">DESCUBRE SI SERÁS UN VERDADERO CAMPEÓN</section>
         <section class="slides">
             <ul class="list">
                 <li class="slide">

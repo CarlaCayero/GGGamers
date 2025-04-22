@@ -18,7 +18,7 @@
         @if (!Auth::check())
             <a href="{{ url('/login') }}" class="PreNavBar" tabindex="1" >
                 <div class="IniciarSesion">
-                    Iniciar Sesion
+                    Iniciar Sesión
                 </div>
             </a>
             <img src="{{ asset('image/logo/logo.png') }}" alt="my logo"  >
