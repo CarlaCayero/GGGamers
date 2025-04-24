@@ -265,7 +265,7 @@ export default {
             axios.delete(`usuarios/${this.MiUsuario.id_usuario}`)
                 .then(() => {
                     this.cerrarModal();
-                    window.location.href = '/GGGamers/public/';
+                    window.location.href = '/public/';
 
                 })
                 .catch((error) => {

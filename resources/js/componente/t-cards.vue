@@ -43,7 +43,7 @@
     },
     methods: {
   goToGame() {
-    const baseURL = window.location.origin + "/GGGamers/public";
+    const baseURL = window.location.origin + "/public";
     window.location.href = `${baseURL}/eventos/${this.juegoID}`;
   }
 
