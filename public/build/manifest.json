@@ -30,14 +30,14 @@
     "src": "resources/js/Navbar.js"
   },
   "resources/js/app.css": {
-    "file": "assets/app-ec87df54.css",
+    "file": "assets/app-a27c6007.css",
     "src": "resources/js/app.css"
   },
   "resources/js/app.js": {
     "css": [
-      "assets/app-ec87df54.css"
+      "assets/app-a27c6007.css"
     ],
-    "file": "assets/app-018c9946.js",
+    "file": "assets/app-b883af77.js",
     "isEntry": true,
     "src": "resources/js/app.js"
   },
