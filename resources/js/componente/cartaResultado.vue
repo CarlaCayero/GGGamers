@@ -57,6 +57,7 @@ export default {
     justify-content: center;
     color: #000;
     flex-direction: column;
+    animation: float 3s ease-in-out infinite, glow 2s ease-in-out infinite;
 }
 
 .cover {
@@ -95,5 +96,23 @@ p {
     height: 400px;
     border-radius: 5px;
     margin-top: 20px;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes glow {
+    0%, 100% {
+        box-shadow: 0 0 10px #C6FF41, 0 0 20px #C6FF41, 0 0 30px #C6FF41;
+    }
+    50% {
+        box-shadow: 0 0 20px #C6FF41, 0 0 30px #C6FF41, 0 0 40px #C6FF41;
+    }
 }
 </style>

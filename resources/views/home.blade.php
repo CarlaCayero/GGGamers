@@ -81,7 +81,7 @@
     </aside>
 
     <div id="app">
-        <prueba></prueba>
+        <Carouselmagenes></Carouselmagenes>
     </div>
 @endsection
 

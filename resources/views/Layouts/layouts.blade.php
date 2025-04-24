@@ -7,10 +7,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>GG Gamers</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="icon" href="{{ asset('image/logo/logo.png') }}" type="image/x-icon">
     <link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/css/app.scss','resources/js/pablo.js','resources/css/torneos.css', 'resources/css/nosotros.css', 'resources/js/nosotros.js'])
+    @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/css/app.scss','resources/js/Navbar.js','resources/css/torneos.css', 'resources/css/nosotros.css', 'resources/js/nosotros.js'])
 </head>
 <body class="BodyClass">
 
@@ -21,7 +22,9 @@
                     Iniciar Sesión
                 </div>
             </a>
-            <img src="{{ asset('image/logo/logo.png') }}" alt="my logo"  >
+            <a href="{{ url('/') }}">
+                <img src="{{ asset('image/logo/logo.png') }}" alt="my logo"  >
+            </a>
             <a href="{{ url('/register') }}" class="PreNavBar" tabindex="2">
                 <div class="Registrarse">
                     Registrarse
@@ -60,7 +63,9 @@
             </div>
             @endif
 
-            <img src="{{ asset('image/logo/logo.png') }}" alt="my logo">
+            <a href="{{ url('/') }}">
+                <img src="{{ asset('image/logo/logo.png') }}" alt="my logo"  >
+            </a>
             {{-- @if (Auth::user()->roles_id_rol == 2) --}}
             <div class="BotonesDeLasOpciones">
                 <a href="{{ url('/torneos') }}" class="PostNavBar">

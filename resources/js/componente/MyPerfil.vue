@@ -36,8 +36,8 @@
                 </div>
 
                 <div class="cardButton">
-                    <div class="Editar" @click="abrirModal('editar')">Editar</div>
-                    <div class="Eliminar" @click="abrirModal('eliminar')">Eliminar</div>
+                    <button class="Editar" @click="abrirModal('editar')">Editar</button>
+                    <button class="Eliminar" @click="abrirModal('eliminar')">Eliminar</button>
                 </div>
             </div>
 
@@ -146,13 +146,14 @@
                 </div>
 
                 <div class="modal-footer">
-                    <button v-if="modalType === 'editar'" class="btn btn-info" @click="guardarCambios">
+                    <button v-if="modalType === 'editar' " class="btn btn-secondary" @click="guardarCambios">
                         Guardar cambios
                     </button>
                     <button v-else-if="modalType === 'eliminar'" class="btn btn-danger" @click="eliminarUsuario">
                         Eliminar
                     </button>
-                    <button class="btn btn-secondary" @click="cerrarModal">Cerrar</button>
+                    <button v-if="modalType === 'editar' " class="btn btn-danger" @click="cerrarModal">Cerrar</button>
+                    <button v-if="modalType === 'eliminar' " class="btn btn-secondary" @click="cerrarModal">Cerrar</button>
                 </div>
             </div>
         </div>
@@ -554,15 +555,28 @@ input {
     align-items: center;
     border-radius: 10px;
     color: black;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
+.Editar:hover,
+.Eliminar:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px 5px rgba(255, 255, 255, 0.6); /* efecto brillante */
+}
+
+/* Colores individuales siguen igual */
 .Editar {
-    background-color: #C9FFFF;
+    background-color: #C6FF41;
 }
 
 .Eliminar {
     background-color: red;
+    color: white;
 }
+
 
 .tablaEstadistica {
     display: flex;
@@ -597,7 +611,6 @@ input {
     justify-content: space-around;
     align-items: center;
     flex-direction: row;
-    border: solid black 1px;
     margin: 20px;
 }
 
