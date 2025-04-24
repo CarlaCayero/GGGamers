@@ -9,7 +9,7 @@ export default defineConfig({
                 'resources/css/app.css',
                 'resources/js/app.js',
                 'resources/css/app.scss',
-                'resources/js/pablo.js',
+                'resources/js/Navbar.js',
                 'resources/css/torneos.css',
                 'resources/css/nosotros.css',
                 'resources/js/nosotros.js',
