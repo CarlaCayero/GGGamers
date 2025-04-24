@@ -129,7 +129,7 @@ export default {
 .pagination button {
     margin: 0 10px;
     padding: 10px;
-    background: #007bff;
+    background: #C9FFFF;
     color: black;
     border: none;
     cursor: pointer;
