@@ -8,18 +8,54 @@
                     <h5 class="card-title text-cente">{{ evento.fecha_inicio }} / {{ evento.fecha_fin }}</h5>
                     <p class="card-text">{{ evento.descripcion }}</p>
                     <p class="card-text">{{ getEspacioNombre(evento.espacios_id_espacio) }}</p>
-                    <button @click="generarQR(evento)" class="btn btn-primary w-100">Participar</button>
+                    <button @click="abrirModal(evento)" class="btn btn-primary w-100">Participar</button>
                 </div>
             </div>
         </div>
         <div v-else class="text-center">
             <p class="alert alert-warning text-center">No hay eventos disponibles para este juego.</p>
         </div>
+        <!-- Modal -->
+        <div v-if="mostrarModal" class="modal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title">Introduce tu correo electrónico</h3>
+                    </div>
+                    <div class="modal-body">
+                        <input type="email" v-model="correoUsuario" placeholder="Correo electrónico" class="form-control" />
+                    </div>
+
+                    <div class="modal-footer">
+                        <button @click="enviarQR" class="btn btn btn-secondary">Enviar</button>
+                        <button @click="cerrarModal" class="btn btn-danger">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div v-if="mostrarConfirmacion" class="modal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title">¡Gracias por participar!</h3>
+                    </div>
+                    <div class="modal-body">
+                        <p>Te hemos enviado un correo con tu código QR.</p>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button @click="cerrarConfirmacion" class="btn btn btn-secondary">Aceptar</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
 <script>
 import QRCode from "qrcode";
+
 
 export default {
     props: {
@@ -30,7 +66,11 @@ export default {
         return {
             espacios: [],
             qrCode: '',
-            qrEventoId: null
+            qrEventoId: null,
+            mostrarModal: false,
+            correoUsuario: '',
+            eventoSeleccionado: null,
+            mostrarConfirmacion: false,
         };
     },
     methods: {
@@ -47,21 +87,37 @@ export default {
             const espacio = this.espacios.find(esp => esp.id_espacio === idEspacio);
             return espacio ? espacio.nombre : 'Desconocido';
         },
-        generarQR(evento) {
+        abrirModal(evento) {
+            console.log("Abriendo modal para evento:", evento);
+            this.eventoSeleccionado = evento; // Guarda el evento seleccionado
+            this.mostrarModal = true; // Muestra el modal
+        },
+        cerrarModal() {
+            this.mostrarModal = false; // Oculta el modal
+            this.correoUsuario = ''; // Limpia el correo ingresado
+        },
+        cerrarConfirmacion() {
+        this.mostrarConfirmacion = false;
+        },
+        enviarQR() {
+            if (!this.correoUsuario) {
+                alert("Por favor, introduce un correo electrónico válido.");
+                return;
+            }
+
+            const evento = this.eventoSeleccionado;
             const qrData = `
-        Nombre del Evento: ${evento.nombre}
-        Fecha: ${evento.fecha_inicio} - ${evento.fecha_fin}
-        Descripción: ${evento.descripcion}
-        Espacio: ${this.getEspacioNombre(evento.espacios_id_espacio)}
-        `;
+                Nombre del Evento: ${evento.nombre}
+                Fecha: ${evento.fecha_inicio} - ${evento.fecha_fin}
+                Descripción: ${evento.descripcion}
+                Espacio: ${this.getEspacioNombre(evento.espacios_id_espacio)}
+            `;
+
             QRCode.toDataURL(qrData)
                 .then(url => {
                     console.log('QR Code generado:', url);
                     this.qrCode = url;
                     this.qrEventoId = evento.id_evento;
-
-                    // Obtener el correo del usuario (puedes ajustarlo según tu lógica)
-                    const usuarioEmail = prompt("Introduce tu correo electrónico:");
 
                     // Enviar el QR por correo
                     axios.post('/enviar-qr', {
@@ -72,16 +128,16 @@ export default {
                             fecha_inicio: evento.fecha_inicio,
                             fecha_fin: evento.fecha_fin,
                         },
-                        email: usuarioEmail
+                        email: this.correoUsuario
                     })
                         .then(response => {
-                            alert('Correo enviado con éxito.');
+                            this.cerrarModal();
+                            this.mostrarConfirmacion = true;
                         })
                         .catch(error => {
                             console.error('Error al enviar el correo:', error.response ? error.response.data : error);
                         });
 
-                    // Agrega este log para verificar los datos enviados
                     console.log('Datos enviados al backend:', {
                         qrCode: url,
                         evento: {
@@ -90,7 +146,7 @@ export default {
                             fecha_fin: evento.fecha_fin,
                             descripcion: evento.descripcion,
                         },
-                        email: usuarioEmail
+                        email: this.correoUsuario
                     });
                 })
                 .catch(error => {
@@ -105,6 +161,10 @@ export default {
 </script>
 
 <style scoped>
+
+h3 {
+    color: white;
+}
 .centro {
     display: flex;
     justify-content: center;
@@ -157,5 +217,65 @@ export default {
 
 .btn-primary:hover {
     background-color: #c6ff41;
+}
+
+.modal-body img {
+    width: 60px;
+    height: 60px;
+}
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    /* fondo oscurecido */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 20000;
+}
+.modal-dialog {
+    border-radius: 16px;
+    width: 90%;
+    max-width: 800px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    animation: fadeIn 0.3s ease-out;
+}
+.modal-content {
+    display: flex;
+    flex-direction: column;
+
+}
+.modal-header {
+    background-color: #23023B;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.modal-body {
+    padding: 20px;
+    font-size: 16px;
+    color: #333;
+}
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    background-color: #23023B;
+}
+
+.modal-footer .btn {
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 14px;
+    cursor: pointer;
+    border: none;
 }
 </style>
