@@ -138,6 +138,9 @@ export default {
     background: #ccc;
     cursor: not-allowed;
 }
+button{
+    border-radius: 10px;
+}
 @media (max-width: 800px) {
     .TorneosContainer{
         flex-direction: column;

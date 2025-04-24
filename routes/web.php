@@ -20,7 +20,7 @@ use App\Http\Controllers\Api\JuegoController;
 
 Route::get('/', function () {
     return view('home');
-})->name('VolverHome');
+});
 Route::get('/torneos', function () {
     return view('torneos');
 });

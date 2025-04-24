@@ -10,7 +10,10 @@
                             background-image:  url('image/juegos/mk1.jpg');
                         "
                     ></div>
-                    <div class="content">ENTRA AL COMBATE, DEMUESTRA TU PODER
+                    <div class="content">
+                        <div class="contentText">
+                            ENTRA AL COMBATE, DEMUESTRA TU PODER
+                        </div>
 
                     </div>
                     <div class="overlay"></div>
@@ -22,8 +25,10 @@
                             background-image:  url('image/juegos/valorant.jpg');
                         "
                     ></div>
-                    <div class="content">SOLO LOS MEJORES ALCANZAN LA GLORIA
-                        <p></p>
+                    <div class="content">
+                        <div class="contentText">
+                            SOLO LOS MEJORES ALCANZAN LA GLORIA
+                        </div>
                     </div>
                     <div class="overlay"></div>
                 </li>
@@ -34,7 +39,10 @@
                             background-image:  url('image/juegos/cod6.png');
                         "
                     ></div>
-                    <div class="content">JUEGA DURO, GANA CON HONOR</div>
+                    <div class="content">
+                        <div class="contentText">
+                            JUEGA DURO, GANA CON HONOR
+                        </div></div>
                     <div class="overlay"></div>
                 </li>
                 <li class="slide">
@@ -44,7 +52,11 @@
                             background-image:  url('image/juegos/Hearthstone.jpg');
                         "
                     ></div>
-                    <div class="content">CADA PARTIDA ES UNA NUEVA OPORTUNIDAD</div>
+                    <div class="content">
+                        <div class="contentText">
+                            CADA PARTIDA ES UNA NUEVA OPORTUNIDAD
+                        </div>
+                    </div>
                     <div class="overlay"></div>
                 </li>
                 <li class="slide">
@@ -54,7 +66,11 @@
                             background-image:  url('image/juegos/mario.jpg');
                         "
                     ></div>
-                    <div class="content">LA VICTORIA PERTENECE A LOS PERSEVERANTES</div>
+                    <div class="content">
+                        <div class="contentText">
+                            LA VICTORIA PERTENECE A LOS PERSEVERANTES
+                        </div>
+                        </div>
                     <div class="overlay"></div>
                 </li>
                 <li class="slide">
@@ -64,7 +80,10 @@
                             background-image:  url('image/juegos/tft.jpg');
                         "
                     ></div>
-                    <div class="content">ENTRENA, COMPITE, CONQUISTA</div>
+                    <div class="content">
+                        <div class="contentText">
+                            ENTRENA, COMPITE, CONQUISTA
+                        </div></div>
                     <div class="overlay"></div>
                 </li>
             </ul>
@@ -204,21 +223,28 @@ main {
     box-sizing: border-box;
     max-width: 70rem;
     position: relative;
-    color: #C9FFFF;
     text-transform: uppercase;
     font-size: 4.6rem;
     line-height: 1.25em;
     font-weight: 500;
     z-index: 2; /* Asegura que el contenido esté por encima del overlay */
 }
-
-.slide .content p {
-    position: relative;
-    z-index: 3; /* Resalta el <p> por encima del contenido */
-    font-size: 1.5rem;
-    font-weight: bold;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Sombra de texto para mayor contraste */
+.contentText {
+    border-radius: 15px;
+    padding: 0.5rem 1rem; /* Añade un poco de espacio alrededor del texto */
+    display: inline-block; /* Hace que el fondo se ajuste al tamaño del texto */
 }
+.slide:nth-child(odd) .contentText {
+    background-color: rgba(35, 2, 59, 0.6); /* Color original con opacidad */
+    color: #C9FFFF;
+}
+
+.slide:nth-child(even) .contentText {
+    background-color: rgba(198, 255, 65, 0.6); /* C6FF41 con opacidad */
+    color: #23023B;
+}
+
+
 @media (max-width: 760px) {
     .slides .slide {
 width: 100%;

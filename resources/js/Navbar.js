@@ -1,9 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const icono = document.querySelector(".UsuarioIcono .icono");
-    const opcionDesalir = document.querySelector(
-        ".UsuarioIcono .OpcionDesalir"
-    );
-
+    // Navbar GSAP Scroll Animation
     const navbar = document.querySelector(".Mynavbar");
 
     function applyNavbarAnimation() {
@@ -17,6 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 left: "0%",
                 x: "0%",
                 borderRadius: "0px",
+                border: "solid 0px"
             });
         }
     }
@@ -50,15 +47,20 @@ document.addEventListener("DOMContentLoaded", function () {
     applyNavbarAnimation();
     window.addEventListener("resize", applyNavbarAnimation);
 
-        // Añadir el evento de click en el icono para mostrar u ocultar la opción
-        icono.addEventListener("click", function () {
-            if (
-                opcionDesalir.style.display === "none" ||
-                opcionDesalir.style.display === ""
-            ) {
-                opcionDesalir.style.display = "block";
-            } else {
-                opcionDesalir.style.display = "none";
-            }
-        });
+    // Toggle menú de usuario al hacer click
+    const icono = document.querySelector(".UsuarioIcono .icono");
+    const menu = document.querySelector(".UsuarioIcono .OpcionDesalir");
+
+    icono.style.cursor = "pointer"; // Mostrar mano
+
+    icono.addEventListener("click", () => {
+        menu.classList.toggle("activo");
+    });
+
+    // Cierra el menú si haces clic fuera
+    document.addEventListener("click", (e) => {
+        if (!icono.contains(e.target) && !menu.contains(e.target)) {
+            menu.classList.remove("activo");
+        }
+    });
 });
