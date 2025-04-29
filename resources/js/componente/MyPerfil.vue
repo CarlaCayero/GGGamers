@@ -5,8 +5,11 @@
 
         <div class="cardcontainer">
             <div class="cardinfo">
+                <div class="cardIconShow">
+                    <img :src="image" alt="Imagen Perfil">
+                </div>
                 <div class="cardinfoName">
-                    <div class="cardinfoNameUser">
+                    <div class="cardinfoNameUser" style="">
                         <h4>Nombre: {{ MiUsuario.nombre }}</h4>
                     </div>
                     <div class="cardinfoNameYear">
@@ -85,7 +88,7 @@
                 <div class="modal-header">
                     <h1 class="modal-title">
                         {{ modalType === 'editar' ? 'Editar Usuario' : modalType === 'eliminar' ? 'Eliminar Usuario' :
-                        'Significado de las imágenes' }}
+                            'Significado de las imágenes' }}
                     </h1>
                     <button type="button" class="close" @click="cerrarModal">
                         <span>&times;</span>
@@ -101,6 +104,8 @@
                         <input v-model="MiUsuarioEditado.mail" type="email" />
                         <label>Edad:</label>
                         <input v-model="MiUsuarioEditado.edad" type="number" />
+                        <label class="form-label">Multimedia</label>
+                        <input class="form-control" type="file" @change="agafarMultimedia">
                     </div>
 
                     <!-- Eliminar -->
@@ -146,14 +151,15 @@
                 </div>
 
                 <div class="modal-footer">
-                    <button v-if="modalType === 'editar' " class="btn btn-secondary" @click="guardarCambios">
+                    <button v-if="modalType === 'editar'" class="btn btn-secondary" @click="guardarCambios">
                         Guardar cambios
                     </button>
                     <button v-else-if="modalType === 'eliminar'" class="btn btn-danger" @click="eliminarUsuario">
                         Eliminar
                     </button>
-                    <button v-if="modalType === 'editar' " class="btn btn-danger" @click="cerrarModal">Cerrar</button>
-                    <button v-if="modalType === 'eliminar' " class="btn btn-secondary" @click="cerrarModal">Cerrar</button>
+                    <button v-if="modalType === 'editar'" class="btn btn-danger" @click="cerrarModal">Cerrar</button>
+                    <button v-if="modalType === 'eliminar'" class="btn btn-secondary"
+                        @click="cerrarModal">Cerrar</button>
                 </div>
             </div>
         </div>
@@ -194,11 +200,12 @@ export default {
             Imagen3: '../image/ImageResult/catstanding.png',
             Imagen4: '../image/ImageResult/catcat.png',
             Imagen5: '../image/ImageResult/kirbo.jpg',
-
+            image: '',
         };
     },
     mounted() {
         this.ObtenerElDatosDeUsuarios();
+
     },
     methods: {
         ObtenerElDatosDeUsuarios() {
@@ -214,6 +221,13 @@ export default {
                     if (response.data.length > 0) {
                         this.MiUsuario = response.data[0];
                         this.eventosParticipados = this.MiUsuario.eventos
+                        if(this.MiUsuario.ImagenRuta == null){
+                            this.image = '../image/logo/usuario.png'
+                        }else{
+                            this.image = '../' + this.MiUsuario.ImagenRuta;
+                        }
+
+
                         this.eventosGanados = this.eventosParticipados.filter(
                             (evento) => evento.pivot.posicion === 1
                         );
@@ -231,6 +245,7 @@ export default {
                     } else {
                         console.error("No se encontró el usuario");
                     }
+
                 })
                 .catch((error) => {
                     console.error("Error al cargar los datos:", error);
@@ -250,9 +265,24 @@ export default {
             this.modalType = null;
             this.mostrarModal = false;
         },
+        agafarMultimedia(event) {
+            const me = this;
+            me.MiUsuarioEditado.multimedia = event.target.files[0];
+        },
         guardarCambios() {
-            console.log("Guardando cambios:", this.MiUsuarioEditado);
-            axios.put(`usuarios/${this.MiUsuario.id_usuario}`, this.MiUsuarioEditado)
+            const formData = new FormData();
+            formData.append("_method", "PUT"); // Muy importante para que Laravel lo entienda como PUT porque en Put no funciona utilizar form data
+            formData.append("nombre", this.MiUsuarioEditado.nombre);
+            formData.append("mail", this.MiUsuarioEditado.mail);
+            formData.append("edad", this.MiUsuarioEditado.edad);
+
+            // Si el usuario seleccionó un archivo (imagen)
+            if (this.MiUsuarioEditado.multimedia) {
+                formData.append("file", this.MiUsuarioEditado.multimedia);
+            }
+
+            axios
+                .post(`usuarios/${this.MiUsuario.id_usuario}`, formData)
                 .then(() => {
                     this.cerrarModal();
                 })
@@ -260,6 +290,7 @@ export default {
                     console.error("Error en la actualización:", error);
                 });
         },
+
         eliminarUsuario() {
             console.log("Eliminando usuario:", this.MiUsuario.id_usuario);
             axios.delete(`usuarios/${this.MiUsuario.id_usuario}`)
@@ -371,7 +402,7 @@ p {
 
 .cardcontainer {
     width: 100%;
-    height: 450px;
+    height: 700px;
     display: flex;
     border: solid 2px #C6FF41;
     color: white;
@@ -379,7 +410,22 @@ p {
     align-items: center;
     padding: 10px;
 }
-
+.cardIconShow{
+    position: relative;
+    width: 300px;
+    height: 300px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    margin: 10px;
+}
+.cardIconShow img{
+    display: flex;
+    position: relative;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+}
 .cardIcon {
     width: 200px;
     height: 200px;
@@ -397,7 +443,8 @@ p {
     text-align: center;
     margin: 5px;
 }
-.cardButton{
+
+.cardButton {
     display: flex;
     width: 90%;
     height: 100px;
@@ -558,13 +605,14 @@ input {
     font-weight: bold;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .Editar:hover,
 .Eliminar:hover {
     transform: scale(1.05);
-    box-shadow: 0 0 20px 5px rgba(255, 255, 255, 0.6); /* efecto brillante */
+    box-shadow: 0 0 20px 5px rgba(255, 255, 255, 0.6);
+    /* efecto brillante */
 }
 
 /* Colores individuales siguen igual */
@@ -707,12 +755,12 @@ input {
         padding: 10px;
     }
 
-    .cardButton{
+    .cardButton {
         width: 100%;
         height: 300px;
         flex-direction: column;
         justify-content: space-around;
-}
+    }
 
 }
 </style>
