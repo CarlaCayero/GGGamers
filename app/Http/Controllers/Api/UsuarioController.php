@@ -30,20 +30,25 @@ class UsuarioController extends Controller
 
     public function update(Request $request, Usuario $usuario)
     {
-        // Asignación manual de los campos
         $usuario->nombre = $request->input('nombre');
         $usuario->mail = $request->input('mail');
         $usuario->edad = $request->input('edad');
 
+        if ($request->hasFile("file")) {
+            $file = $request->file("file");
+            $file->storeAs('', $file->getClientOriginalName(), 'public');
+            $usuario->ImagenRuta = 'media/' . $file->getClientOriginalName();
+        }
+
         try {
             $usuario->save();
-
             return response()->json($usuario, 200);
         } catch (QueryException $ex) {
             $mensaje = Utilidad::errorMensaje($ex);
             return response()->json(["error" => $mensaje], 400);
         }
     }
+
 
 
     /**

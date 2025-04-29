@@ -23,7 +23,7 @@
                 </div>
             </a>
             <a href="{{ url('/') }}">
-                <img src="{{ asset('image/logo/logo.png') }}" alt="my logo"  >
+                <img src="{{ asset('image/logo/logo.png') }}" alt="my logo">
             </a>
             <a href="{{ url('/register') }}" class="PreNavBar" tabindex="2">
                 <div class="Registrarse">
@@ -34,7 +34,11 @@
             @if (Auth::user()->roles_id_rol == 2)
             <div class="UsuarioIcono">
                 <div class="icono">
+                    @if (Auth::user()->ImagenRuta)
+                    <img src="{{ asset(Auth::user()->ImagenRuta) }}" alt="Logo del usuario">
+                @else
                     <img src="{{ asset('image/logo/usuario.png') }}" alt="Usuario">
+                @endif
                     <div class="OpcionDesalir">
                         <form action="{{ route('Administrador', ['id_usuario' => Auth::user()->id_usuario]) }}" method="GET">
                             <button type="submit" class="BotondeMirar">Mirar Perfil</button>
@@ -49,7 +53,11 @@
             @else
             <div class="UsuarioIcono">
                 <div class="icono">
+                @if (Auth::user()->ImagenRuta)
+                    <img src="{{ asset(Auth::user()->ImagenRuta) }}" alt="Logo del usuario">
+                @else
                     <img src="{{ asset('image/logo/usuario.png') }}" alt="Usuario">
+                @endif
                     <div class="OpcionDesalir">
                         <form action="{{ route('Profile', ['id_usuario' => Auth::user()->id_usuario]) }}" method="GET">
                             <button type="submit" class="BotondeMirar">Mirar Perfil</button>

@@ -281,7 +281,6 @@ button{
     position: relative;
     width: 70px;
     height: 70px;
-    margin-right: 10px;
     background-color: #C6FF41;
     border-radius: 50%;
     display: flex;
@@ -290,8 +289,9 @@ button{
     cursor: pointer;
 }
 .icono img{
-    width: 70%;
-    height: 70%;
+    width: 90%;
+    height: 90%;
+    border-radius: 50%;
 }
 
 .UsuarioIcono .icono .OpcionDesalir {
