@@ -2,11 +2,10 @@ name: Send Message to Google Chat
 
 on:
   pull_request:
-    types: [opened, synchronize, reopened] # Notifica cuando se abre, actualiza o reabre un PR
+    types: [opened, synchronize, reopened] # Eventos que activan el flujo de trabajo
   push:
     branches:
-      - main # Cambia "main" por la rama que desees monitorear
-
+      - main
 jobs:
   google-chat-action:
     name: Google Chat GitHub Action
@@ -19,7 +18,7 @@ jobs:
 
       - name: Notify Google Chat
         if: ${{ always() }} # Asegura que se envíe la notificación incluso si los pasos anteriores fallan
-        uses: SimonScholz/google-chat-action@main
+        uses: SimonScholz/google-chat-action@main # Usa la acción google-chat-action para enviar un mensaje a Google Chat.
         with:
           webhookUrl: ${{ secrets.GOOGLE_CHAT_WEBHOOK_URL }}
           message: |
